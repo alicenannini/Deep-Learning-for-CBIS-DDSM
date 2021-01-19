@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  19 JAN 2021 12:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  19 JAN 2021 18:21
 entering extended mode
 **./project.tex
 (project.tex
@@ -287,56 +287,92 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [1
 
-{C:/Users/alice/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<images/label_mass_calc.png, id=8, 293.29575pt x 404.712pt>
+{C:/Users/alice/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [1
+
+]
+<images/label_mass_calc.png, id=11, 293.29575pt x 404.712pt>
 File: images/label_mass_calc.png Graphic file (type png)
 <use images/label_mass_calc.png>
 Package pdftex.def Info: images/label_mass_calc.png  used on input line 41.
-(pdftex.def)             Requested size: 187.78532pt x 259.13213pt.
+(pdftex.def)             Requested size: 140.84258pt x 194.35219pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 41.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 41.
-<images/label_benign_malign.png, id=10, 289.08pt x 401.70074pt>
+<images/label_benign_malign.png, id=13, 289.08pt x 401.70074pt>
 File: images/label_benign_malign.png Graphic file (type png)
 <use images/label_benign_malign.png>
 Package pdftex.def Info: images/label_benign_malign.png  used on input line 43.
 
-(pdftex.def)             Requested size: 187.78532pt x 260.94301pt.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
-3.
+(pdftex.def)             Requested size: 140.84258pt x 195.70726pt.
+<images/scratch_model.png, id=14, 425.1885pt x 410.13225pt>
+File: images/scratch_model.png Graphic file (type png)
+<use images/scratch_model.png>
+Package pdftex.def Info: images/scratch_model.png  used on input line 56.
+(pdftex.def)             Requested size: 234.73524pt x 226.43079pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2
+
+ <./images/label_mass_calc.png> <./images/label_benign_malign.png>]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
+5.
 
 ("C:\Users\alice\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-[1
+<images/scratch_accuracy.png, id=28, 295.1025pt x 400.49625pt>
+File: images/scratch_accuracy.png Graphic file (type png)
+<use images/scratch_accuracy.png>
+Package pdftex.def Info: images/scratch_accuracy.png  used on input line 77.
+(pdftex.def)             Requested size: 169.00563pt x 229.36688pt.
+<images/scratch_matrix.png, id=29, 263.18324pt x 224.037pt>
+File: images/scratch_matrix.png Graphic file (type png)
+<use images/scratch_matrix.png>
+Package pdftex.def Info: images/scratch_matrix.png  used on input line 84.
+(pdftex.def)             Requested size: 169.00563pt x 143.87202pt.
 
- <./images/label_mass_calc.png> <./images/label_benign_malign.png>] [2]
-(project.aux) ) 
+[3 <./images/scratch_model.png> <./images/scratch_accuracy.png> <./images/scrat
+ch_matrix.png>]
+Overfull \hbox (0.1743pt too wide) in paragraph at lines 107--107
+[]        \T1/cmtt/m/n/10.95 train_generator = train_datagen.flow(train_set,tra
+in_classes,batch_size=50)[] 
+ []
+
+[4] [5
+
+] (project.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4616 strings out of 480799
- 75142 string characters out of 2895785
- 331516 words of memory out of 3000000
- 20562 multiletter control sequences out of 15000+200000
+ 4647 strings out of 480799
+ 75881 string characters out of 2895785
+ 333540 words of memory out of 3000000
+ 20590 multiletter control sequences out of 15000+200000
  543078 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,9n,49p,619b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
-en/ec/dpi600\ecti0900.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljf
-our/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fo
-nts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\alice\AppData\Local\MiK
-TeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\alice\AppData
-\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\ali
-ce\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:
-\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx14
-40.pk><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmmi10.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmmi9.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alice/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on project.pdf (3 pages, 140162 bytes).
+ 48i,9n,49p,648b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
+ectt1095.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecti0900.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\alice\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\alice\AppData\Lo
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\alice\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Us
+ers\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.
+pk><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmmi10.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmmi9.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alice/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb>
+Output written on project.pdf (6 pages, 283118 bytes).
 PDF statistics:
- 236 PDF objects out of 1000 (max. 8388607)
+ 335 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
