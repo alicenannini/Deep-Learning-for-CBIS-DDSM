@@ -2,11 +2,11 @@
 \usepackage[a4paper,top=2cm,bottom=2.5cm,left=2.5cm,right=2cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[italian]{babel}
+\usepackage[english]{babel}
 %\usepackage{frontespizio}
 \usepackage{graphicx}
 \usepackage{subfig}
-\usepackage[italian]{varioref}
+\usepackage[english]{varioref}
 
 \begin{document}
 
@@ -33,7 +33,19 @@ We developed different models of neural networks to work with the given dataset 
 
 \subsection{Data Preprocessing}
 Starting from the numpy arrays of the dataset images we were given, first of all we deleted all the samples associated with the \textit{baseline patch} label. Since this labeled images were placed in the even positions of the dataset, we just selected all the odd-index samples al discard the others. This is done both for the training data and the test data. \\
-Then we aggregated the labels according to the classification that we needed to do: in the $Task 2.1$ the classes \textit{mass benign} and  \textit{mass malignant} were aggregated in a unique class \textit{mass}, and so for the \textit{calcification} classes. On the other hand, in the $Task 2.2$ we aggregated  \textit{mass benign} and  \textit{cacification benign} in a 
+Then we aggregated the labels according to the classification that we needed to do: in the $Task\ 2.1$ the classes \textit{mass benign} and  \textit{mass malignant} were aggregated in a unique class \textit{mass}, and so for the \textit{calcification} classes. On the other hand, in the $Task\ 2.2$ we aggregated  \textit{mass benign} and  \textit{cacification benign} in the \textit{benign} class, and the other labels in the \textit{malignant} class.
+
+\begin{figure}[htbp]
+\centering
+	\subfloat[][$Task\ 2.1$: 0 for \textit{mass}, 1 for \textit{calcification} \label{fig:label_mass_calc}]
+		{\includegraphics[width=.4\textwidth]{images/label_mass_calc}} \quad
+	\subfloat[][$Task\ 2.2$: 0 for \textit{benign}, 1 for \textit{malignant} \label{fig:label_benign_malign}]
+		{\includegraphics[width=.4\textwidth]{images/label_benign_malign}} \\
+\caption{Label distribution}
+\label{fig:label distribution}
+\end{figure}
+
+For the first case, we can see from the figure that the labels are pretty much equally distributed. Instead, in the second case the dataset is a little more unbalanced towards the \textit{benign} class.
 
 \subsection{Task 2.1}
 For the first classification, we first tried to build a simple CNN 
