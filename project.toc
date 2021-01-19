@@ -1,0 +1,11 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{1}%
+\contentsline {section}{\numberline {2}The dataset}{1}%
+\contentsline {section}{\numberline {3}Task 1: Related works}{1}%
+\contentsline {section}{\numberline {4}Task 2: Scratch CNN}{1}%
+\contentsline {subsection}{\numberline {4.1}Data Preprocessing}{1}%
+\contentsline {subsection}{\numberline {4.2}Task 2.1}{1}%
+\contentsline {subsection}{\numberline {4.3}Task 2.2}{2}%
+\contentsline {section}{\numberline {5}Task 3: Pretrained network}{2}%
+\contentsline {section}{\numberline {6}Task 4: Baseline patches}{2}%
+\contentsline {section}{\numberline {7}Task 5: Ensemble network}{2}%
