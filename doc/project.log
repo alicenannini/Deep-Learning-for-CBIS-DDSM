@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  19 JAN 2021 18:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  22 JAN 2021 16:34
 entering extended mode
 **./project.tex
 (project.tex
@@ -290,26 +290,26 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {C:/Users/alice/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [1
 
 ]
-<images/label_mass_calc.png, id=11, 293.29575pt x 404.712pt>
+<images/label_mass_calc.png, id=14, 293.29575pt x 404.712pt>
 File: images/label_mass_calc.png Graphic file (type png)
 <use images/label_mass_calc.png>
-Package pdftex.def Info: images/label_mass_calc.png  used on input line 41.
+Package pdftex.def Info: images/label_mass_calc.png  used on input line 50.
 (pdftex.def)             Requested size: 140.84258pt x 194.35219pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 41.
+(Font)              <9> on input line 50.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 41.
-<images/label_benign_malign.png, id=13, 289.08pt x 401.70074pt>
+(Font)              <5> on input line 50.
+<images/label_benign_malign.png, id=16, 262.581pt x 362.5545pt>
 File: images/label_benign_malign.png Graphic file (type png)
 <use images/label_benign_malign.png>
-Package pdftex.def Info: images/label_benign_malign.png  used on input line 43.
+Package pdftex.def Info: images/label_benign_malign.png  used on input line 52.
 
-(pdftex.def)             Requested size: 140.84258pt x 195.70726pt.
-<images/scratch_model.png, id=14, 425.1885pt x 410.13225pt>
+(pdftex.def)             Requested size: 140.84258pt x 194.4654pt.
+<images/scratch_model.png, id=17, 418.56375pt x 406.51875pt>
 File: images/scratch_model.png Graphic file (type png)
 <use images/scratch_model.png>
-Package pdftex.def Info: images/scratch_model.png  used on input line 56.
-(pdftex.def)             Requested size: 234.73524pt x 226.43079pt.
+Package pdftex.def Info: images/scratch_model.png  used on input line 65.
+(pdftex.def)             Requested size: 234.73524pt x 227.97769pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -317,62 +317,134 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [2
 
  <./images/label_mass_calc.png> <./images/label_benign_malign.png>]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
-5.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
+4.
 
 ("C:\Users\alice\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<images/scratch_accuracy.png, id=28, 295.1025pt x 400.49625pt>
+<images/scratch_accuracy.png, id=29, 293.29575pt x 395.076pt>
 File: images/scratch_accuracy.png Graphic file (type png)
 <use images/scratch_accuracy.png>
-Package pdftex.def Info: images/scratch_accuracy.png  used on input line 77.
-(pdftex.def)             Requested size: 169.00563pt x 229.36688pt.
-<images/scratch_matrix.png, id=29, 263.18324pt x 224.037pt>
+Package pdftex.def Info: images/scratch_accuracy.png  used on input line 86.
+(pdftex.def)             Requested size: 169.00563pt x 227.66125pt.
+<images/scratch_matrix.png, id=30, 268.6035pt x 218.0145pt>
 File: images/scratch_matrix.png Graphic file (type png)
 <use images/scratch_matrix.png>
-Package pdftex.def Info: images/scratch_matrix.png  used on input line 84.
-(pdftex.def)             Requested size: 169.00563pt x 143.87202pt.
+Package pdftex.def Info: images/scratch_matrix.png  used on input line 93.
+(pdftex.def)             Requested size: 169.00563pt x 137.17686pt.
 
 [3 <./images/scratch_model.png> <./images/scratch_accuracy.png> <./images/scrat
 ch_matrix.png>]
-Overfull \hbox (0.1743pt too wide) in paragraph at lines 107--107
+Overfull \hbox (0.1743pt too wide) in paragraph at lines 116--116
 []        \T1/cmtt/m/n/10.95 train_generator = train_datagen.flow(train_set,tra
 in_classes,batch_size=50)[] 
  []
 
-[4] [5
+<images/scratch_DataAugumentation_2.1/test7/2_adam_acc.png, id=38, 289.08pt x 4
+01.70074pt>
+File: images/scratch_DataAugumentation_2.1/test7/2_adam_acc.png Graphic file (t
+ype png)
+<use images/scratch_DataAugumentation_2.1/test7/2_adam_acc.png>
+Package pdftex.def Info: images/scratch_DataAugumentation_2.1/test7/2_adam_acc.
+png  used on input line 127.
+(pdftex.def)             Requested size: 169.00563pt x 234.84381pt.
+<images/scratch_DataAugumentation_2.1/test7/2_adam_matrix.png, id=39, 257.16075
+pt x 224.037pt>
+File: images/scratch_DataAugumentation_2.1/test7/2_adam_matrix.png Graphic file
+ (type png)
+<use images/scratch_DataAugumentation_2.1/test7/2_adam_matrix.png>
+Package pdftex.def Info: images/scratch_DataAugumentation_2.1/test7/2_adam_matr
+ix.png  used on input line 134.
+(pdftex.def)             Requested size: 169.00563pt x 147.23586pt.
+[4 <./images/scratch_DataAugumentation_2.1/test7/2_adam_acc.png> <./images/scra
+tch_DataAugumentation_2.1/test7/2_adam_matrix.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 143--147
 
-] (project.aux)
+ []
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+<images/2.2/0_acc.png, id=45, 263.18324pt x 360.1455pt>
+File: images/2.2/0_acc.png Graphic file (type png)
+<use images/2.2/0_acc.png>
+Package pdftex.def Info: images/2.2/0_acc.png  used on input line 158.
+(pdftex.def)             Requested size: 169.00563pt x 231.27815pt.
+<images/2.2/0_matrix.png, id=46, 240.9pt x 199.947pt>
+File: images/2.2/0_matrix.png Graphic file (type png)
+<use images/2.2/0_matrix.png>
+Package pdftex.def Info: images/2.2/0_matrix.png  used on input line 165.
+(pdftex.def)             Requested size: 169.00563pt x 140.27924pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+
+ []
+
+<images/2.2/1_model.png, id=47, 380.622pt x 418.56375pt>
+File: images/2.2/1_model.png Graphic file (type png)
+<use images/2.2/1_model.png>
+Package pdftex.def Info: images/2.2/1_model.png  used on input line 178.
+(pdftex.def)             Requested size: 234.73524pt x 258.14006pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5
+
+ <./images/2.2/0_acc.png> <./images/2.2/0_matrix.png>]
+<images/2.2/5_acc.png, id=53, 263.18324pt x 361.35pt>
+File: images/2.2/5_acc.png Graphic file (type png)
+<use images/2.2/5_acc.png>
+Package pdftex.def Info: images/2.2/5_acc.png  used on input line 189.
+(pdftex.def)             Requested size: 169.00563pt x 232.05168pt.
+<images/2.2/5_matrix.png, id=54, 240.9pt x 430.60875pt>
+File: images/2.2/5_matrix.png Graphic file (type png)
+<use images/2.2/5_matrix.png>
+Package pdftex.def Info: images/2.2/5_matrix.png  used on input line 196.
+(pdftex.def)             Requested size: 169.00563pt x 302.10739pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/2.2/7_acc.png, id=55, 265.59225pt x 362.5545pt>
+File: images/2.2/7_acc.png Graphic file (type png)
+<use images/2.2/7_acc.png>
+Package pdftex.def Info: images/2.2/7_acc.png  used on input line 219.
+(pdftex.def)             Requested size: 169.00563pt x 230.71744pt.
+<images/2.2/7_matrix.png, id=56, 234.8775pt x 428.802pt>
+File: images/2.2/7_matrix.png Graphic file (type png)
+<use images/2.2/7_matrix.png>
+Package pdftex.def Info: images/2.2/7_matrix.png  used on input line 226.
+(pdftex.def)             Requested size: 169.00563pt x 308.54091pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6 <./images/2.2/1_model.png>] [7 <./images/2.2/5_acc.png> <./images/2.2/5_matr
+ix.png>] [8 <./images/2.2/7_acc.png> <./images/2.2/7_matrix.png>] (project.aux)
  ) 
 Here is how much of TeX's memory you used:
- 4647 strings out of 480799
- 75881 string characters out of 2895785
- 333540 words of memory out of 3000000
- 20590 multiletter control sequences out of 15000+200000
- 543078 words of font info for 46 fonts, out of 3000000 for 9000
+ 4733 strings out of 480799
+ 78280 string characters out of 2895785
+ 333616 words of memory out of 3000000
+ 20664 multiletter control sequences out of 15000+200000
+ 543419 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,9n,49p,648b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,9n,49p,651b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ectt1095.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecti0900.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
 /jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts
 /pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\alice\AppData\Local\MiKTeX
 \2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\alice\AppData\Lo
-cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\alice\
-AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Us
-ers\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.
-pk><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmi10.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmmi9.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alice/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on project.pdf (6 pages, 283118 bytes).
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\alice\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Us
+ers\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.
+pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecbx1440.pk><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/alice/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alice/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb>
+Output written on project.pdf (9 pages, 780238 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
+ 397 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
