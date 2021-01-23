@@ -34,6 +34,14 @@ Finally class labels have been assigned to the patches according to the followin
 \end{itemize}
 
 \section{Task 1: Related works}
+\begin{itemize}
+\item Transfer Learning and Fine Tuning in Breast Mammogram Abnormalities Classification on CBIS-DDSM Database (Lenin G. Falconi, Maria Perez, Wilbert G. Aguilar, Aura Conci)
+\item 
+\item 
+\item 
+\item 
+\end{itemize}
+
 
 \clearpage
 
@@ -179,9 +187,6 @@ We tried to change the architecture of the model again, looking for a structure 
 \caption{Architecture of the CNN from scratch ($Task\ 2.2$)}
 \label{fig:model_2.2_1}
 \end{figure}
-
-The results (fig.~\ref{fig:accuracy_2.2_1} and~\ref{fig:matrix_2.2_1}) in terms of accuracy and loss were very similar to the previous model, but we can see from the confusion matrix that the \textit{malignant} class was better predicted and we considered it as a good result.
-
 \begin{figure}[h]
 \centering
 	\begin{minipage}[c]{.4\textwidth}
@@ -198,6 +203,8 @@ The results (fig.~\ref{fig:accuracy_2.2_1} and~\ref{fig:matrix_2.2_1}) in terms 
 		\label{fig:matrix_2.2_1}
 	\end{minipage}%
 \end{figure}
+
+The results (fig.~\ref{fig:accuracy_2.2_1} and~\ref{fig:matrix_2.2_1}) in terms of accuracy and loss were very similar to the previous model, but we can see from the confusion matrix that the \textit{malignant} class was better predicted and we considered it as a good result.
 
 Trying to solve the unbalancing of the two classes, we assigned weights to them so that their unbalance in the training set would be considered. We have trained again the network, passing the new weights of the classes as parameters: the results are found in the figures~\ref{fig:accuracy_2.2_1_weights} and~\ref{fig:matrix_2.2_1_weights}. 
 
@@ -230,7 +237,6 @@ Trying to solve the unbalancing of the two classes, we assigned weights to them 
 \end{figure}
 
 
-
 Finally, we tried a different approach to see if performance could improve. We used the data augmentation functions to create a new training set with a larger number of samples: from each image we created four more, applying the \textit{ImageDataGenerator} transformations, and obtaining a new dataset of $13.380$ samples.
 
 \begin{verbatim}
@@ -260,15 +266,187 @@ The classification did not improve, and indeed this model was experimenting a hi
 
 \subsubsection{Mass benign - mass malignant discriminator}
 
+\clearpage
 
 \section{Task 3: Pretrained network}
+For this task, we were inspired by some papers of works on the same dataset. Indeed, in most of the papers, pretrained networks were used to solve the classification. 
+We found a study on the most used networks in the literature (shown in fig.~\ref{fig:pretrained_networks}) and then chose accordingly. The pretrained networks we worked on were:
+\begin{itemize}
+\item VGG-16
+\item VGG-19
+\item ResNet-50
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{images/pretrained_networks}
+\caption{Pretrained networks most used in the literature}
+\label{fig:pretrained_networks}
+\end{figure}
+
+We used two strategies to leverage a pre-trained network. In the first one, called Feature Extraction, we started from a network trained on the “imagenet” dataset and removed the top layers and trained a new classifier on top of the output.
+The second one, called Fine Tuning is similar. The main difference was that the last layer of the model base used for feature extraction was unfrozen and we trained both the newly added part of the model and these top layers. \\
+The results obtained with \textit{Resnet-50} were not reported in this article, because they weren't significant.
 
 \subsection{Task 3.1: Mass-Calcification discriminator}
+In all our tests we applied Data Augmentation because we ran into an overfitting problem. Two more variations for each image were added and we obtained improved results, in particular, overtraining has been significantly reduced. The batch size value range that achieved higher performance is between $32$ and $64$. Lower values led to high oscillations of both the training and validation loss/accuracy. For the learning rate, after testing values from 1e-4 to 1e-6, we ended up using the value of 1e-5. After testing different activation functions we ended up using “sigmoid” for the output. \\
+
+The final architecture obtained that has been built using \textbf{VGG16} is shown in figure~\ref{fig:vgg16_model}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{images/Task 3/VGG16 3.1/Model}
+\caption{Architecture of the CNN based on VGG16 ($Task\ 3.1$)}
+\label{fig:vgg16_model}
+\end{figure}
+
+\textbf{Feature extraction:}\\
+The best results were obtained with the following parameters: batch size 50, learning rate 1e-5. We obtained an accuracy of XXX after training for 100 epochs.
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.1/Accuracy}
+		\caption{Accuracy and loss graphs for the model based on VGG16}
+		\label{fig:vgg16_3.1_accuracy}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.1/Conf Matrix}
+		\caption{Confusion matrix for the test-set predictions}
+		\label{fig:vgg16_3.1_matrix}
+	\end{minipage}%
+\end{figure}
+
+Fine Tuning:\\
 
 
-\subsubsection{ VGG16 }
+VGG19: 
+The final architecture that has been built using \textbf{VGG19} is shown in figure~\ref{fig:vgg19_model}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{images/Task 3/VGG19 3.1/Model}
+\caption{Architecture of the CNN based on VGG19 ($Task\ 3.1$)}
+\label{fig:vgg16_model}
+\end{figure}
+
+\textbf{Feature extraction:}\\
+The best results were obtained with the following parameters: batch size 32, learning rate 1e-5. We obtained an accuracy of XXX after training for 65 epochs.
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.1/Accuracy}
+		\caption{Accuracy and loss graphs for the model based on VGG19}
+		\label{fig:vgg19_3.1_accuracy}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.1/Conf Matrix}
+		\caption{Confusion matrix for the test-set predictions}
+		\label{fig:vgg19_3.1_matrix}
+	\end{minipage}%
+\end{figure}
+
+Fine Tuning:\\
+
 
 \subsection{Task 3.2: Benign-Malignant discriminator}
+Regarding the classification of benign and malignant we used the same parameters but as we can see from the confusion matrix in figure~\ref{fig:vgg16_matrix} the classifier fails to properly classify malignant samples. To overcome this issue we decided to add a weight for each class, giving more importance to the malignant class. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{images/Task 3/VGG16 3.2/Without Weights/Conf Matrix}
+\caption{Confusion Matrix obtained with the VGG16 model ($Task\ 3.2$)}
+\label{fig:vgg16_matrix}
+\end{figure}
+
+Using the \textbf{VGG16} convolutional base, the best results were obtained with the following parameters: batch size 50, learning rate 1e-5. We obtained an accuracy of XXX after training for 100 epochs. 
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/Without Weights/Accuracy}
+		\caption{Accuracy and loss graphs for the model based on VGG16, without weights}
+		\label{fig:vgg16_3.2_accuracy}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/Without Weights/Conf Matrix}
+		\caption{Confusion matrix for the test-set predictions, without weights}
+		\label{fig:vgg16_3.2_matrix}
+	\end{minipage}%
+\end{figure}
+
+The class weights that we setted were: 
+\begin{verbatim}
+    class_weight =  { 0: 1, 1: 1.25}
+\end{verbatim}
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/With Weights/Accuracy}
+		\caption{Accuracy and loss graphs for the model based on VGG16, with weights}
+		\label{fig:vgg16_3.2_accuracy}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/With Weights/Conf Matrix}
+		\caption{Confusion matrix for the test-set predictions, with weights}
+		\label{fig:vgg16_3.2_matrix}
+	\end{minipage}%
+\end{figure}
+
+Instead, using the VGG19 convolutional base, the best results were obtained with the following parameters: batch size 32, learning rate 1e-5. We obtained an accuracy of XXX after training for 65epochs. 
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/Without Weights/Accuracy}
+		\caption{Accuracy and loss graphs for the model based on VGG19, without weights}
+		\label{fig:vgg19_3.2_accuracy}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/Without Weights/Conf Matrix}
+		\caption{Confusion matrix for the test-set predictions, without weights}
+		\label{fig:vgg19_3.2_matrix}
+	\end{minipage}%
+\end{figure}
+
+The class weights that we setted were: 
+\begin{verbatim}
+    class_weight =  { 0: 1, 1: 1.2}
+\end{verbatim}
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/With Weights/Accuracy}
+		\caption{Accuracy and loss graphs for the model based on VGG19, with weights}
+		\label{fig:vgg19_3.2_accuracy}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/With Weights/Conf Matrix}
+		\caption{Confusion matrix for the test-set predictions, with weights}
+		\label{fig:vgg19_3.2_matrix}
+	\end{minipage}%
+\end{figure}
 
 
 \section{Task 4: Baseline patches}
