@@ -359,13 +359,6 @@ Fine Tuning:\\
 \subsection{Task 3.2: Benign-Malignant discriminator}
 Regarding the classification of benign and malignant we used the same parameters but as we can see from the confusion matrix in figure~\ref{fig:vgg16_matrix} the classifier fails to properly classify malignant samples. To overcome this issue we decided to add a weight for each class, giving more importance to the malignant class. 
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=.5\textwidth]{images/Task 3/VGG16 3.2/Without Weights/Conf Matrix}
-\caption{Confusion Matrix obtained with the VGG16 model ($Task\ 3.2$)}
-\label{fig:vgg16_matrix}
-\end{figure}
-
 Using the \textbf{VGG16} convolutional base, the best results were obtained with the following parameters: batch size 50, learning rate 1e-5. We obtained an accuracy of XXX after training for 100 epochs. 
 
 \begin{figure}[h]

@@ -11,5 +11,5 @@
 \contentsline {section}{\numberline {5}Task 3: Pretrained network}{9}%
 \contentsline {subsection}{\numberline {5.1}Task 3.1: Mass-Calcification discriminator}{9}%
 \contentsline {subsection}{\numberline {5.2}Task 3.2: Benign-Malignant discriminator}{10}%
-\contentsline {section}{\numberline {6}Task 4: Baseline patches}{10}%
-\contentsline {section}{\numberline {7}Task 5: Ensemble network}{10}%
+\contentsline {section}{\numberline {6}Task 4: Baseline patches}{11}%
+\contentsline {section}{\numberline {7}Task 5: Ensemble network}{11}%
