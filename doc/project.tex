@@ -46,10 +46,10 @@ Finally class labels have been assigned to the patches according to the followin
 \clearpage
 
 \section{Task 2: From Scratch CNN}
-We developed different models of neural networks to work with the given dataset from scratch and we did different test to find the better hyperparameters to build the final model. This section is divided in three parts: in the first one we describe the main preprocessing applied to the data before the training of the models. Then we show how we built a model for classifying the dataset images between \textit{mass} abnormality and \textit{calfication} abnormality. In the last part, we describe the model built to classify between \textit{benign} and \textit{malignant} abnormality.
+We developed different models of neural networks to work with the given dataset from scratch and we did different tests to find the better hyperparameters to build the final model. This section is divided in three parts: in the first one we describe the main preprocessing applied to the data before the training of the models. Then we show how we built a model for classifying the dataset images between \textit{mass} abnormality and \textit{calfication} abnormality. In the last part, we describe the model built to classify between \textit{benign} and \textit{malignant} abnormalities.
 
 \subsection{Data Preprocessing}
-Starting from the numpy arrays of the dataset images we were given, first of all we deleted all the samples associated with the \textit{baseline patch} label. Since this labeled images were placed in the even positions of the dataset, we just selected all the odd-index samples al discard the others. This is done both for the training data and the test data. \\
+Starting from the numpy arrays of the dataset images we were given, first of all we deleted all the samples associated with the \textit{baseline patch} label. Since this labeled images were placed in the even positions of the dataset, we just selected all the odd-index samples and discard the others. This is done both for the training data and the test data. \\
 Then we aggregated the labels according to the classification that we needed to do: in the $Task\ 2.1$ the classes \textit{mass benign} and  \textit{mass malignant} were aggregated in a unique class \textit{mass}, and so for the \textit{calcification} classes. On the other hand, in the $Task\ 2.2$ we aggregated  \textit{mass benign} and  \textit{cacification benign} in the \textit{benign} class, and the other labels in the \textit{malignant} class.
 
 \begin{figure}[h]
@@ -63,10 +63,11 @@ Then we aggregated the labels according to the classification that we needed to 
 \end{figure}
 
 For the first case, we can see from the figure that the labels are pretty much equally distributed. Instead, in the second case the dataset is a little more unbalanced towards the \textit{benign} class. \\
-Finally, we reshaped all the training images tensors in a single \textit{numpy} array, that has been then normalized. The same has been done for the test images. With regards to the labels, they has been categorizated so that is possible to use the categorical loss function in the model.
+Finally, we reshaped all the training images tensors in a single \textit{numpy} array, that has been then normalized. The same has been done for the test images. 
+%With regards to the labels, they has been categorizated so that is possible to use the categorical loss function in the model.
 
 \subsection{Task 2.1: Mass-Calcification discriminator}
-We first tried to build a simple CNN, with some convolutional and max-pooling layers, and two final dense layers. We trained and tested the model several times, changing the hyperparameters to find a good model for out problem. The final architecture that has been used for the most relevant tests is shown in figure~\ref{fig:scratch_model}. It is made of five convolutional layers, with an increasing number of kernels. Each layer is followed by a max-pooling of $2x2$, except for the last one so that the input of the dense layer is not too reduced. The activation function used in the layers is \textit{ReLu}.
+We first tried to build a simple CNN, with some convolutional and max-pooling layers, and two final dense layers. We trained and tested the model several times, changing the hyperparameters to find a good model for our problem. The final architecture that has been used for the most relevant tests is shown in figure~\ref{fig:scratch_model}. It is made of five convolutional layers, with an increasing number of kernels. Each layer is followed by a max-pooling of $2x2$, except for the last one so that the input of the dense layer is not too reduced. The activation function used in the layers is \textit{ReLu}.
 
 \begin{figure}[h]
 \centering
@@ -75,18 +76,22 @@ We first tried to build a simple CNN, with some convolutional and max-pooling la
 \label{fig:scratch_model}
 \end{figure}
 
-After asserting the architecture, the model has been trained with different numbers of \textit{hidden units} for the first fully connected layer, but also for different \textit{batch sizes} and different \textit{output functions}. 
+After asserting the architecture, the model has been trained with different numbers of \textit{hidden units} for the first fully connected layer, but also for different \textit{batch sizes}, different \textit{output functions} and different \textit{optimizers}. 
 In all the tests, the conclusion has been that the network was over-training, and this is the reason for which we have developed a second model, adding a data augmentation preprocessing. 
-In the figure~\ref{fig:scratch_accuracy}, we present the results in term of accuracy and loss, but also the consufion matrix (fig.~\ref{fig:scratch_matrix}), related to a test of the model with $256$ hidden units, a batch size of $50$, and the \textit{softmax} function for the output layer. 
-The used optimizer is Adam, with the deafult learning rate of $0.001$. As we said before, the gap between the training and validation graphs show that the model is over-training: even if the predictions on the test set are accurate, we cannot rely on this network as it is.
-\begin{verbatim}
-        network.compile(optimizer='adam',
-                loss='categorical_crossentropy',
-                metrics=['accuracy'])
+In the figure~\ref{fig:scratch_accuracy}, we present the results in term of accuracy and loss, but also the consufion matrix (fig.~\ref{fig:scratch_matrix}), related to a test of the model with $64$ hidden units, a batch size of $25$, and the \textit{softmax} function for the output layer. 
+The used optimizer is \textit{Adam}, with the deafult learning rate of $0.001$. As we said before, the gap between the training and validation graphs show that the model is over-training: even if the predictions on the test set are accurate, we cannot rely on this network as it is.\\
 
-        network.fit(train_images, train_labels, epochs=100, batch_size=50, 
-                validation_split=0.15, shuffle=True, callbacks=[callback])
-\end{verbatim}
+\begin{center}
+\begin{tabular}{|l|ccc|}
+\hline
+ & Training set & Validation set & Test set \\
+\hline
+accuracy & 0.9982 & 0.8134 & 0.8244 \\
+loss & 0.0123 & 1.1618 & 1.5748 \\
+\hline
+\end{tabular}
+\end{center}
+
 \begin{figure}[hb]
 \centering
 	\begin{minipage}[c]{.4\textwidth}
@@ -105,45 +110,58 @@ The used optimizer is Adam, with the deafult learning rate of $0.001$. As we sai
 \end{figure}
 
 \subsubsection{Data augmentation}
-To overcome the problem of over-fitting, we augmented our training using the \textit{ImageDataGenerator} class of \textit{keras}. The main variations we adopted were random rotation up to 40 degrees, random vertical and horizontal shifts with a range of 0.2, random zoom with a range of 0.2, random shear with a range of 0.2 and nearest fill model. To set these parameters we referred to the data in the papers we studied in the initial phase of the project. Before applying these variations to the train set, we splitted it to get the validation set separately.
+To overcome the problem of over-fitting, we augmented our training using the \textit{ImageDataGenerator} class of \textit{keras}. The main variations we adopted were random rotation up to 40 degrees, random vertical and horizontal shifts with a range of 0.2, random zoom with a range of 0.2, random shear with a range of 0.2 and nearest fill model. To set these parameters we referred to the data in the papers we studied in the initial phase of the project. Before applying these variations to the train set, we splitted it to get the validation set separately using a validation size of the $15\%$.
 
-\begin{verbatim}
-        train_set, val_set, train_classes, val_classes = 
-                train_test_split( train_images, train_labels, test_size=0.15)
-        
-        train_datagen = ImageDataGenerator(
-                rotation_range=40,
-                width_shift_range=0.2,
-                height_shift_range=0.2,
-                shear_range=20,
-                zoom_range=0.2,
-                horizontal_flip=True,
-                fill_mode='nearest')
-
-        train_generator = train_datagen.flow(train_set,train_classes,batch_size=50)
-\end{verbatim}
+\begin{figure}[h]
+\centering
+\includegraphics[width=.7\textwidth]{images/val_label_distribution}
+\caption{Label distribution of the validation \\set and the training set, after the split}
+\label{fig:val_label}
+\end{figure}
 
 We trained again our model with the augmented training set and with the validation set, and the results were more satisfying, having a mean accuracy over $80\%$. At this point, we wanted to have a more accurate analysis on some hyperparameters so we did several tests changing their values to get a model as good as possible. 
-The tests were regarding the value of the batch size, the number of hidden units, the learning rate and the optimizer itself: we tried using the Adam optimizer and the RMSprop optimizer. Moreover, we also tested the model with different output functions: the softmax and the sigmoid. 
-The final accuracy we managed to achieve was $87\%$. This result has been obtained with the Adam optimizer with a learning rate of $0.001$ and with the $softmax$ as the output function for the last FC layer. The batch size was chosen at $50$ and the number of hidden units for the forst FC layer at $256$, both as in the first model without data augmentation. The architecture of the trained network is the same as in figure~\ref{fig:scratch_model}, while the results in terms of accuracy and confusion matrix of the test set are shown in figures~\ref{fig:scratch_accuracy_da} and~\ref{fig:scratch_matrix_da}.
-All the tests were done with a maximum of 100 epochs, using the early stopping with a patience of 30.
+The tests were regarding the value of the \textit{batch size}, the number of \textit{hidden units}, the \textit{learning rate} and the \textit{optimizer} itself: we tried using the Adam optimizer and the RMSprop optimizer. Moreover, we also tested the model with different \textit{output functions}: the softmax and the sigmoid. 
+The final accuracy we managed to achieve was $87\%$. This result has been obtained with the Adam optimizer with a learning rate of $0.001$ and with the $softmax$ as the output function for the last FC layer. Regarding to the batch size and the number of hidden units, the differences in terms of performance were imited (1 or 2 percentage points) therefore we have chosen the smaller values, so to have a model as simple as possible: the batch size was chosen at $25$ and the number of hidden units for the forst FC layer at $64$. The architecture of the trained network is the same as in figure~\ref{fig:scratch_model}, while the results in terms of accuracy and confusion matrix of the test set are shown in figures~\ref{fig:scratch_accuracy_da} and~\ref{fig:scratch_matrix_da}.
+All the tests were done with a maximum of $100$ epochs, using the early stopping with a patience of $50$.
 
-\begin{figure}[hb]
+\begin{center}
+\begin{tabular}{|cccccc|}
+\hline
+Batch size & Hidden units & Test accuracy & Test loss & AUC & F-score \\
+\hline
+25 & 64 & 0.87 & 0.30 & 0.87 & 0.86 \\ 
+50 & 64 & 0.86 & 0.32 & 0.85 & 0.86 \\ 
+25 & 128 & 0.80 & 0.46 & 0.80 & 0.78 \\ 
+50 & 128 & 0.84 & 0.33 & 0.83 & 0.83 \\ 
+25 & 256 & 0.85 & 0.33 & 0.84 & 0.83 \\ 
+50 & 256 & 0.86 & 0.29 & 0.86 & 0.85 \\ 
+25 & 512 & 0.88 & 0.29 & 0.88 & 0.87 \\ 
+50 & 512 & 0.87 & 0.30 & 0.87 & 0.85 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[h]
 \centering
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/scratch_DataAugumentation_2.1/test7/2_adam_acc}
+		\includegraphics[width=.9\textwidth]{images/2.1-da/da_accuracy}
 		\caption{Accuracy and loss graphs for the model with data augmentation}
 		\label{fig:scratch_accuracy_da}
 	\end{minipage}
 	\hspace{5mm}%
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/scratch_DataAugumentation_2.1/test7/2_adam_matrix}
+		\includegraphics[width=.9\textwidth]{images/2.1-da/da_matrix}
 		\caption{Confusion matrix for the test-set predictions}
 		\label{fig:scratch_matrix_da}
 	\end{minipage}%
 \end{figure}
+
+
+Before saving the model, we performed a cross-validation analysis to make sure that the performance remained similar to the values obtained in the previous test. The cross-validation was made with a $6$ folds, so that the dimension of the validation set would remain similar to the one used in the previous test (circa $15\%$ of the training set).
+
+% INSERIRE RISULTATI DELLA CROSS-VALIDATION
 
 \clearpage
 
@@ -157,14 +175,14 @@ This complexity remains even in deep learning techniques.\\
 As a first approach, we started from the network built in the previous task and we added some modifications, based also on the feedback found on the papers.
 We used again the data augmentation, but modifying some of the parameters: in more than one paper it was specified that, to avoid too many distortions in the images, it was necessary to specify a rotation angle multiple of the right angle, and a fill mode of type 'reflect'. Moreover we disabled the horizontal flip of the image, to avoid too much differences from the original set.
 We inserted a dropout layer between the two dense layers at the top of the model, with a rate varying from $0.2$ to $0.5$ in the tests.
-The better results that we obtained are shown in figures~\ref{fig:accuracy_2.2} and~\ref{fig:matrix_2.2}: the used batch size was still $50$, the hidden units of the first dense layer were $256$, and the learning rate was $0.001$. This model was built with a rate of the dropout layer of $0.2$. 
+The better results that we obtained are shown in figures~\ref{fig:accuracy_2.2} and~\ref{fig:matrix_2.2}: the used batch size was $50$, the hidden units of the first dense layer were $256$, and the optimizer was \textit{Adam} with a learning rate of $0.001$. This model was built with a rate of the dropout layer of $0.2$.
 
 \begin{figure}[h]
 \centering
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/2.2/0_acc}
-		\caption{Accuracy and loss graphs for the model with data augmentation}
+		\caption{Accuracy and loss graphs for the model with data augmentation ($Task\ 2.2$)}
 		\label{fig:accuracy_2.2}
 	\end{minipage}
 	\hspace{5mm}%
@@ -176,7 +194,7 @@ The better results that we obtained are shown in figures~\ref{fig:accuracy_2.2} 
 	\end{minipage}%
 \end{figure}
 
-As we can see from the graphs, there are some improvement during the training of the network, but very limited. We tried to increment the number of training epochs and the model started to overfitting badly. The major problem is that, predicting the test-set labels, the classifier tended to assign samples to the benign class, when we would have preferred more attention to the malignant class instead, since it is the most critical.\\
+As we can see from the graphs, there are some improvement during the training of the network, but they're very limited and slow. We tried to increment the number of training epochs and the model started to overfitting badly. The major problem is that, predicting the test-set labels, the classifier tended to assign samples to the benign class, when we would have preferred more attention to the malignant class instead, since it is the most critical.\\
 
 
 We tried to change the architecture of the model again, looking for a structure that could better capture the features of our dataset. After few attempts, we arrived at the model described in figure~\ref{fig:model_2.2_1}, in which we inserted an extra convolutional layer with $128$ kernels, and we decreased the number of hidden units of the FC layer to $128$. This last modification has been done also to simplify the network, decreasing the number of parameters to train in order to reduce the overfitting. The dropout layer remained with a rate of $0.2$.
@@ -204,7 +222,7 @@ We tried to change the architecture of the model again, looking for a structure 
 	\end{minipage}%
 \end{figure}
 
-The results (fig.~\ref{fig:accuracy_2.2_1} and~\ref{fig:matrix_2.2_1}) in terms of accuracy and loss were very similar to the previous model, but we can see from the confusion matrix that the \textit{malignant} class was better predicted and we considered it as a good result.
+The results (fig.~\ref{fig:accuracy_2.2_1} and~\ref{fig:matrix_2.2_1}) in terms of accuracy and loss were very similar to the previous model, but we can see from the confusion matrix that the \textit{malignant} class was better predicted and we considered it as a good result.\\
 
 Trying to solve the unbalancing of the two classes, we assigned weights to them so that their unbalance in the training set would be considered. We have trained again the network, passing the new weights of the classes as parameters: the results are found in the figures~\ref{fig:accuracy_2.2_1_weights} and~\ref{fig:matrix_2.2_1_weights}. 
 
@@ -236,33 +254,6 @@ Trying to solve the unbalancing of the two classes, we assigned weights to them 
 	\end{minipage}%
 \end{figure}
 
-
-Finally, we tried a different approach to see if performance could improve. We used the data augmentation functions to create a new training set with a larger number of samples: from each image we created four more, applying the \textit{ImageDataGenerator} transformations, and obtaining a new dataset of $13.380$ samples.
-
-\begin{verbatim}
-    from keras.preprocessing.image import ImageDataGenerator
-    variations_per_img = 4
-    train_datagen = ImageDataGenerator(
-        rotation_range=90,
-        width_shift_range=0.2,
-        height_shift_range=0.2,
-        shear_range=20,
-        zoom_range=0.2,
-        fill_mode='reflect')
-
-    for i in range(0,len(train_images)):
-      new_train_images.append(train_images[i])
-      new_train_labels.append(train_labels[i])
-  
-      train_generator = train_datagen.flow(
-  	    	train_images[i].reshape(1,150,150,1),batch_size=1)
-      for j in range(variations_per_img):
-        new_train_images.append(train_generator.next().reshape(150,150))
-        new_train_labels.append(train_labels[i])
-      del train_generator
-\end{verbatim}
-
-The classification did not improve, and indeed this model was experimenting a higher rate of over-fitting. We tried again to reduce the over-training, by adding some dropout layers, also between the convolutional layers, by further simplifying the model, and by decreasing the learning rate, but we did not succeeded.
 
 \subsubsection{Mass benign - mass malignant discriminator}
 
