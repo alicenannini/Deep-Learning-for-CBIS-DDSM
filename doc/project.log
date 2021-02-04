@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  3 FEB 2021 23:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  4 FEB 2021 21:29
 entering extended mode
 **./project.tex
 (project.tex
@@ -305,302 +305,302 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {C:/Users/alice/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [1
 
-]
-<images/label_mass_calc.png, id=14, 293.29575pt x 404.712pt>
+] [2]
+<images/label_mass_calc.png, id=18, 293.29575pt x 404.712pt>
 File: images/label_mass_calc.png Graphic file (type png)
 <use images/label_mass_calc.png>
-Package pdftex.def Info: images/label_mass_calc.png  used on input line 58.
+Package pdftex.def Info: images/label_mass_calc.png  used on input line 89.
 (pdftex.def)             Requested size: 140.84258pt x 194.35219pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 58.
+(Font)              <9> on input line 89.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 58.
-<images/label_benign_malign.png, id=16, 262.581pt x 362.5545pt>
+(Font)              <5> on input line 89.
+<images/label_benign_malign.png, id=20, 262.581pt x 362.5545pt>
 File: images/label_benign_malign.png Graphic file (type png)
 <use images/label_benign_malign.png>
-Package pdftex.def Info: images/label_benign_malign.png  used on input line 60.
+Package pdftex.def Info: images/label_benign_malign.png  used on input line 91.
 
 (pdftex.def)             Requested size: 140.84258pt x 194.4654pt.
-<images/scratch_model.png, id=17, 377.61075pt x 365.56575pt>
+<images/scratch_model.png, id=21, 377.61075pt x 365.56575pt>
 File: images/scratch_model.png Graphic file (type png)
 <use images/scratch_model.png>
-Package pdftex.def Info: images/scratch_model.png  used on input line 74.
+Package pdftex.def Info: images/scratch_model.png  used on input line 105.
 (pdftex.def)             Requested size: 234.73524pt x 227.24527pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 79--83
-
- []
-
-[2
+[3
 
  <./images/label_mass_calc.png> <./images/label_benign_malign.png>]
-<images/scratch_accuracy.png, id=29, 260.172pt x 359.54324pt>
+<images/scratch_accuracy.png, id=32, 260.172pt x 359.54324pt>
 File: images/scratch_accuracy.png Graphic file (type png)
 <use images/scratch_accuracy.png>
-Package pdftex.def Info: images/scratch_accuracy.png  used on input line 99.
-(pdftex.def)             Requested size: 169.00563pt x 233.56866pt.
-<images/scratch_matrix.png, id=30, 230.66174pt x 197.538pt>
+Package pdftex.def Info: images/scratch_accuracy.png  used on input line 130.
+(pdftex.def)             Requested size: 147.88477pt x 204.3767pt.
+<images/scratch_matrix.png, id=33, 230.66174pt x 197.538pt>
 File: images/scratch_matrix.png Graphic file (type png)
 <use images/scratch_matrix.png>
-Package pdftex.def Info: images/scratch_matrix.png  used on input line 106.
-(pdftex.def)             Requested size: 169.00563pt x 144.73805pt.
- [3 <./images/scratch_model.png> <./images/scratch_accuracy.png> <./images/scra
+Package pdftex.def Info: images/scratch_matrix.png  used on input line 137.
+(pdftex.def)             Requested size: 147.88477pt x 126.64993pt.
+ [4 <./images/scratch_model.png> <./images/scratch_accuracy.png> <./images/scra
 tch_matrix.png>]
-<images/val_label_distribution.png, id=37, 678.73575pt x 236.082pt>
+<images/val_label_distribution.png, id=40, 678.73575pt x 236.082pt>
 File: images/val_label_distribution.png Graphic file (type png)
 <use images/val_label_distribution.png>
 Package pdftex.def Info: images/val_label_distribution.png  used on input line 
-117.
+149.
 (pdftex.def)             Requested size: 328.6279pt x 114.3051pt.
-<images/2.1-da/da_accuracy.png, id=38, 264.99pt x 369.17924pt>
+ [5
+
+ <./images/val_label_distribution.png>]
+<images/2.1-da/da_accuracy.png, id=44, 259.56975pt x 360.1455pt>
 File: images/2.1-da/da_accuracy.png Graphic file (type png)
 <use images/2.1-da/da_accuracy.png>
-Package pdftex.def Info: images/2.1-da/da_accuracy.png  used on input line 148.
+Package pdftex.def Info: images/2.1-da/da_accuracy.png  used on input line 187.
 
-(pdftex.def)             Requested size: 169.00563pt x 235.45709pt.
-<images/2.1-da/da_matrix.png, id=39, 236.68425pt x 200.54926pt>
+(pdftex.def)             Requested size: 169.00563pt x 234.49295pt.
+<images/2.1-da/da_matrix.png, id=45, 232.4685pt x 196.93575pt>
 File: images/2.1-da/da_matrix.png Graphic file (type png)
 <use images/2.1-da/da_matrix.png>
-Package pdftex.def Info: images/2.1-da/da_matrix.png  used on input line 155.
-(pdftex.def)             Requested size: 169.00563pt x 143.20801pt.
+Package pdftex.def Info: images/2.1-da/da_matrix.png  used on input line 194.
+(pdftex.def)             Requested size: 169.00563pt x 143.18192pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4 <./images/val_label_distribution.png>] [5 <./images/2.1-da/da_accuracy.png> 
-<./images/2.1-da/da_matrix.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 169--173
+Underfull \hbox (badness 10000) in paragraph at lines 216--220
 
  []
 
-<images/2.2/0_acc.png, id=48, 263.18324pt x 360.1455pt>
+<images/2.2/0_acc.png, id=46, 263.18324pt x 360.1455pt>
 File: images/2.2/0_acc.png Graphic file (type png)
 <use images/2.2/0_acc.png>
-Package pdftex.def Info: images/2.2/0_acc.png  used on input line 184.
+Package pdftex.def Info: images/2.2/0_acc.png  used on input line 231.
 (pdftex.def)             Requested size: 169.00563pt x 231.27815pt.
-<images/2.2/0_matrix.png, id=49, 240.9pt x 199.947pt>
+<images/2.2/0_matrix.png, id=47, 240.9pt x 199.947pt>
 File: images/2.2/0_matrix.png Graphic file (type png)
 <use images/2.2/0_matrix.png>
-Package pdftex.def Info: images/2.2/0_matrix.png  used on input line 191.
+Package pdftex.def Info: images/2.2/0_matrix.png  used on input line 238.
 (pdftex.def)             Requested size: 169.00563pt x 140.27924pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
-
- []
-
-<images/2.2/1_model.png, id=50, 380.622pt x 418.56375pt>
-File: images/2.2/1_model.png Graphic file (type png)
-<use images/2.2/1_model.png>
-Package pdftex.def Info: images/2.2/1_model.png  used on input line 204.
-(pdftex.def)             Requested size: 234.73524pt x 258.14006pt.
-[6
-
- <./images/2.2/0_acc.png> <./images/2.2/0_matrix.png>]
-<images/2.2/5_acc.png, id=57, 263.18324pt x 361.35pt>
-File: images/2.2/5_acc.png Graphic file (type png)
-<use images/2.2/5_acc.png>
-Package pdftex.def Info: images/2.2/5_acc.png  used on input line 212.
-(pdftex.def)             Requested size: 169.00563pt x 232.05168pt.
-<images/2.2/5_matrix.png, id=58, 240.9pt x 430.60875pt>
-File: images/2.2/5_matrix.png Graphic file (type png)
-<use images/2.2/5_matrix.png>
-Package pdftex.def Info: images/2.2/5_matrix.png  used on input line 219.
-(pdftex.def)             Requested size: 169.00563pt x 302.10739pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 225--226
+Underfull \hbox (badness 10000) in paragraph at lines 244--245
+
+ []
+
+[6
+
+ <./images/2.1-da/da_accuracy.png> <./images/2.1-da/da_matrix.png>]
+<images/2.2/1_model.png, id=54, 380.01974pt x 394.47375pt>
+File: images/2.2/1_model.png Graphic file (type png)
+<use images/2.2/1_model.png>
+Package pdftex.def Info: images/2.2/1_model.png  used on input line 250.
+(pdftex.def)             Requested size: 234.73524pt x 243.6623pt.
+ [7 <./images/2.2/0_acc.png> <./images/2.2/0_matrix.png> <./images/2.2/1_model.
+png>]
+<images/2.2/5_acc.png, id=61, 263.18324pt x 361.35pt>
+File: images/2.2/5_acc.png Graphic file (type png)
+<use images/2.2/5_acc.png>
+Package pdftex.def Info: images/2.2/5_acc.png  used on input line 276.
+(pdftex.def)             Requested size: 169.00563pt x 232.05168pt.
+<images/2.2/5_matrix.png, id=62, 240.9pt x 430.60875pt>
+File: images/2.2/5_matrix.png Graphic file (type png)
+<use images/2.2/5_matrix.png>
+Package pdftex.def Info: images/2.2/5_matrix.png  used on input line 283.
+(pdftex.def)             Requested size: 169.00563pt x 302.10739pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--291
 
  []
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-29.
+94.
 ("C:\Users\alice\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<images/2.2/7_acc.png, id=59, 265.59225pt x 362.5545pt>
+<images/2.2/7_acc.png, id=63, 265.59225pt x 362.5545pt>
 File: images/2.2/7_acc.png Graphic file (type png)
 <use images/2.2/7_acc.png>
-Package pdftex.def Info: images/2.2/7_acc.png  used on input line 244.
+Package pdftex.def Info: images/2.2/7_acc.png  used on input line 309.
 (pdftex.def)             Requested size: 169.00563pt x 230.71744pt.
-<images/2.2/7_matrix.png, id=60, 234.8775pt x 428.802pt>
+<images/2.2/7_matrix.png, id=64, 234.8775pt x 428.802pt>
 File: images/2.2/7_matrix.png Graphic file (type png)
 <use images/2.2/7_matrix.png>
-Package pdftex.def Info: images/2.2/7_matrix.png  used on input line 251.
+Package pdftex.def Info: images/2.2/7_matrix.png  used on input line 316.
 (pdftex.def)             Requested size: 169.00563pt x 308.54091pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <./images/2.2/1_model.png>] [8 <./images/2.2/5_acc.png> <./images/2.2/5_matr
-ix.png> <./images/2.2/7_acc.png> <./images/2.2/7_matrix.png>]
-<images/pretrained_networks.png, id=73, 323.40825pt x 172.84575pt>
+[8
+
+ <./images/2.2/5_acc.png> <./images/2.2/5_matrix.png>] [9 <./images/2.2/7_acc.p
+ng> <./images/2.2/7_matrix.png>]
+<images/pretrained_networks.png, id=76, 323.40825pt x 172.84575pt>
 File: images/pretrained_networks.png Graphic file (type png)
 <use images/pretrained_networks.png>
-Package pdftex.def Info: images/pretrained_networks.png  used on input line 273
+Package pdftex.def Info: images/pretrained_networks.png  used on input line 340
 .
 (pdftex.def)             Requested size: 234.73524pt x 125.45367pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 283--284
+Underfull \hbox (badness 10000) in paragraph at lines 350--351
 
  []
 
-<images/Task 3/VGG16 3.1/Model.png, id=74, 424.58624pt x 209.28188pt>
+<images/Task 3/VGG16 3.1/Model.png, id=77, 424.58624pt x 209.28188pt>
 File: images/Task 3/VGG16 3.1/Model.png Graphic file (type png)
 <use images/Task 3/VGG16 3.1/Model.png>
 Package pdftex.def Info: images/Task 3/VGG16 3.1/Model.png  used on input line 
-289.
+356.
 (pdftex.def)             Requested size: 234.73524pt x 115.70253pt.
-<images/Task 3/VGG16 3.1/Accuracy.png, id=75, 313.17pt x 440.39531pt>
+<images/Task 3/VGG16 3.1/Accuracy.png, id=78, 313.17pt x 440.39531pt>
 File: images/Task 3/VGG16 3.1/Accuracy.png Graphic file (type png)
 <use images/Task 3/VGG16 3.1/Accuracy.png>
 Package pdftex.def Info: images/Task 3/VGG16 3.1/Accuracy.png  used on input li
-ne 301.
+ne 368.
 (pdftex.def)             Requested size: 169.00563pt x 237.6688pt.
-<images/Task 3/VGG16 3.1/Conf Matrix.png, id=76, 380.42125pt x 324.21124pt>
+<images/Task 3/VGG16 3.1/Conf Matrix.png, id=79, 380.42125pt x 324.21124pt>
 File: images/Task 3/VGG16 3.1/Conf Matrix.png Graphic file (type png)
 <use images/Task 3/VGG16 3.1/Conf Matrix.png>
 Package pdftex.def Info: images/Task 3/VGG16 3.1/Conf Matrix.png  used on input
- line 308.
+ line 375.
 (pdftex.def)             Requested size: 169.00563pt x 144.03856pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
+Underfull \hbox (badness 10000) in paragraph at lines 381--382
 
  []
 
-[9
+[10
 
  <./images/pretrained_networks.png> <./images/Task 3/VGG16 3.1/Model.png>]
 
-LaTeX Warning: Reference `fig:vgg19_model' on page 10 undefined on input line 3
-18.
+LaTeX Warning: Reference `fig:vgg19_model' on page 11 undefined on input line 3
+85.
 
-<images/Task 3/VGG19 3.1/Model.png, id=81, 430.60875pt x 215.30438pt>
+<images/Task 3/VGG19 3.1/Model.png, id=84, 430.60875pt x 215.30438pt>
 File: images/Task 3/VGG19 3.1/Model.png Graphic file (type png)
 <use images/Task 3/VGG19 3.1/Model.png>
 Package pdftex.def Info: images/Task 3/VGG19 3.1/Model.png  used on input line 
-322.
+389.
 (pdftex.def)             Requested size: 234.73524pt x 117.36977pt.
-<images/Task 3/VGG19 3.1/Accuracy.png, id=82, 317.68687pt x 445.665pt>
+<images/Task 3/VGG19 3.1/Accuracy.png, id=85, 317.68687pt x 445.665pt>
 File: images/Task 3/VGG19 3.1/Accuracy.png Graphic file (type png)
 <use images/Task 3/VGG19 3.1/Accuracy.png>
 Package pdftex.def Info: images/Task 3/VGG19 3.1/Accuracy.png  used on input li
-ne 334.
+ne 401.
 (pdftex.def)             Requested size: 169.00563pt x 237.09895pt.
-<images/Task 3/VGG19 3.1/Conf Matrix.png, id=83, 285.31593pt x 243.15843pt>
+<images/Task 3/VGG19 3.1/Conf Matrix.png, id=86, 285.31593pt x 243.15843pt>
 File: images/Task 3/VGG19 3.1/Conf Matrix.png Graphic file (type png)
 <use images/Task 3/VGG19 3.1/Conf Matrix.png>
 Package pdftex.def Info: images/Task 3/VGG19 3.1/Conf Matrix.png  used on input
- line 341.
+ line 408.
 (pdftex.def)             Requested size: 169.00563pt x 144.03362pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
 
  []
 
 
-LaTeX Warning: Reference `fig:vgg16_matrix' on page 10 undefined on input line 
-351.
+LaTeX Warning: Reference `fig:vgg16_matrix' on page 11 undefined on input line 
+418.
 
-<images/Task 3/VGG16 3.2/Without Weights/Accuracy.png, id=84, 318.43968pt x 435
+<images/Task 3/VGG16 3.2/Without Weights/Accuracy.png, id=87, 318.43968pt x 435
 .87843pt>
 File: images/Task 3/VGG16 3.2/Without Weights/Accuracy.png Graphic file (type p
 ng)
 <use images/Task 3/VGG16 3.2/Without Weights/Accuracy.png>
 Package pdftex.def Info: images/Task 3/VGG16 3.2/Without Weights/Accuracy.png  
-used on input line 359.
+used on input line 426.
 (pdftex.def)             Requested size: 169.00563pt x 231.33371pt.
-<images/Task 3/VGG16 3.2/Without Weights/Conf Matrix.png, id=85, 282.30469pt x 
+<images/Task 3/VGG16 3.2/Without Weights/Conf Matrix.png, id=88, 282.30469pt x 
 245.41687pt>
 File: images/Task 3/VGG16 3.2/Without Weights/Conf Matrix.png Graphic file (typ
 e png)
 <use images/Task 3/VGG16 3.2/Without Weights/Conf Matrix.png>
 Package pdftex.def Info: images/Task 3/VGG16 3.2/Without Weights/Conf Matrix.pn
-g  used on input line 366.
+g  used on input line 433.
 (pdftex.def)             Requested size: 169.00563pt x 146.92545pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/Task 3/VGG16 3.2/With Weights/Accuracy.png, id=86, 326.72063pt x 440.39
+<images/Task 3/VGG16 3.2/With Weights/Accuracy.png, id=89, 326.72063pt x 440.39
 531pt>
 File: images/Task 3/VGG16 3.2/With Weights/Accuracy.png Graphic file (type png)
 
 <use images/Task 3/VGG16 3.2/With Weights/Accuracy.png>
 Package pdftex.def Info: images/Task 3/VGG16 3.2/With Weights/Accuracy.png  use
-d on input line 381.
+d on input line 448.
 (pdftex.def)             Requested size: 169.00563pt x 227.80402pt.
-<images/Task 3/VGG16 3.2/With Weights/Conf Matrix.png, id=87, 277.78781pt x 224
+<images/Task 3/VGG16 3.2/With Weights/Conf Matrix.png, id=90, 277.78781pt x 224
 .33812pt>
 File: images/Task 3/VGG16 3.2/With Weights/Conf Matrix.png Graphic file (type p
 ng)
 <use images/Task 3/VGG16 3.2/With Weights/Conf Matrix.png>
 Package pdftex.def Info: images/Task 3/VGG16 3.2/With Weights/Conf Matrix.png  
-used on input line 388.
+used on input line 455.
 (pdftex.def)             Requested size: 169.00563pt x 136.48662pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10 <./images/Task 3/VGG16 3.1/Accuracy.png> <./images/Task 3/VGG16 3.1/Conf Ma
+[11 <./images/Task 3/VGG16 3.1/Accuracy.png> <./images/Task 3/VGG16 3.1/Conf Ma
 trix.png> <./images/Task 3/VGG19 3.1/Model.png>]
-<images/Task 3/VGG19 3.2/Without Weights/Accuracy.png, id=92, 313.9228pt x 438.
+<images/Task 3/VGG19 3.2/Without Weights/Accuracy.png, id=95, 313.9228pt x 438.
 8897pt>
 File: images/Task 3/VGG19 3.2/Without Weights/Accuracy.png Graphic file (type p
 ng)
 <use images/Task 3/VGG19 3.2/Without Weights/Accuracy.png>
 Package pdftex.def Info: images/Task 3/VGG19 3.2/Without Weights/Accuracy.png  
-used on input line 400.
+used on input line 467.
 (pdftex.def)             Requested size: 169.00563pt x 236.28033pt.
-<images/Task 3/VGG19 3.2/Without Weights/Conf Matrix.png, id=93, 281.55188pt x 
+<images/Task 3/VGG19 3.2/Without Weights/Conf Matrix.png, id=96, 281.55188pt x 
 240.9pt>
 File: images/Task 3/VGG19 3.2/Without Weights/Conf Matrix.png Graphic file (typ
 e png)
 <use images/Task 3/VGG19 3.2/Without Weights/Conf Matrix.png>
 Package pdftex.def Info: images/Task 3/VGG19 3.2/Without Weights/Conf Matrix.pn
-g  used on input line 407.
+g  used on input line 474.
 (pdftex.def)             Requested size: 169.00563pt x 144.60359pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/Task 3/VGG19 3.2/With Weights/Accuracy.png, id=94, 333.49594pt x 445.66
+<images/Task 3/VGG19 3.2/With Weights/Accuracy.png, id=97, 333.49594pt x 445.66
 5pt>
 File: images/Task 3/VGG19 3.2/With Weights/Accuracy.png Graphic file (type png)
 
 <use images/Task 3/VGG19 3.2/With Weights/Accuracy.png>
 Package pdftex.def Info: images/Task 3/VGG19 3.2/With Weights/Accuracy.png  use
-d on input line 422.
+d on input line 489.
 (pdftex.def)             Requested size: 169.00563pt x 225.85127pt.
-<images/Task 3/VGG19 3.2/With Weights/Conf Matrix.png, id=95, 283.0575pt x 246.
+<images/Task 3/VGG19 3.2/With Weights/Conf Matrix.png, id=98, 283.0575pt x 246.
 9225pt>
 File: images/Task 3/VGG19 3.2/With Weights/Conf Matrix.png Graphic file (type p
 ng)
 <use images/Task 3/VGG19 3.2/With Weights/Conf Matrix.png>
 Package pdftex.def Info: images/Task 3/VGG19 3.2/With Weights/Conf Matrix.png  
-used on input line 429.
+used on input line 496.
 (pdftex.def)             Requested size: 169.00563pt x 147.43498pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11 <./images/Task 3/VGG19 3.1/Accuracy.png> <./images/Task 3/VGG19 3.1/Conf Ma
-trix.png>] [12 <./images/Task 3/VGG16 3.2/Without Weights/Accuracy.png> <./imag
+[12 <./images/Task 3/VGG19 3.1/Accuracy.png> <./images/Task 3/VGG19 3.1/Conf Ma
+trix.png>] [13 <./images/Task 3/VGG16 3.2/Without Weights/Accuracy.png> <./imag
 es/Task 3/VGG16 3.2/Without Weights/Conf Matrix.png> <./images/Task 3/VGG16 3.2
 /With Weights/Accuracy.png> <./images/Task 3/VGG16 3.2/With Weights/Conf Matrix
-.png>] [13 <./images/Task 3/VGG19 3.2/Without Weights/Accuracy.png> <./images/T
+.png>] [14 <./images/Task 3/VGG19 3.2/Without Weights/Accuracy.png> <./images/T
 ask 3/VGG19 3.2/Without Weights/Conf Matrix.png> <./images/Task 3/VGG19 3.2/Wit
 h Weights/Accuracy.png> <./images/Task 3/VGG19 3.2/With Weights/Conf Matrix.png
->] (project.aux)
+>] [15
+
+] [16
+
+] (project.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -609,13 +609,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4869 strings out of 480799
- 83687 string characters out of 2895785
- 335763 words of memory out of 3000000
- 20789 multiletter control sequences out of 15000+200000
+ 4871 strings out of 480799
+ 83722 string characters out of 2895785
+ 334764 words of memory out of 3000000
+ 20791 multiletter control sequences out of 15000+200000
  543419 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,9n,49p,822b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,9n,49p,860b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ectt1095.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecti0900.pk> <C:\Users\alice\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -631,9 +631,9 @@ ic/amsfonts/cm/cmmi10.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/alice/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alice/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on project.pdf (14 pages, 1299596 bytes).
+Output written on project.pdf (17 pages, 1307102 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
+ 462 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  151 words of extra memory for PDF output out of 10000 (max. 10000000)
 
