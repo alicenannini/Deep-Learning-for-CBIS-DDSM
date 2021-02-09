@@ -203,8 +203,10 @@ This validation led us to change our mind, because the network with only $64$ hi
 \hline
 Batch size & Hidden units & Measure & 1st & 2nd & 3rd & 4th & \textbf{AVG} \\
 \hline
-\textbf{50} & \textbf{64} & accuracy & 0.87 & 0.85 & 0.85 & 0.85 & \textbf{0.86} \\
-" & " & loss & 0.30 & 0.32 & 0.30 & 0.32 & \textbf{0.31} \\
+\textbf{50} & \textbf{64} & accuracy & 0.87 & 0.87 & 0.85 & 0.85 & \textbf{0.86} \\
+" & " & loss & 0.30 & 0.30 & 0.30 & 0.32 & \textbf{0.31} \\
+" & " & AUC & 0.87 & 0.87 & 0.85 & 0.85 & \textbf{0.86} \\
+" & " & F-score & 0.86 & 0.86 & 0.84 & 0.83 & \textbf{0.85} \\
 \hline
 \end{tabular}
 \caption{Results of 4-holdout validation ($Task\ 2.1$)}
@@ -267,6 +269,7 @@ Batch size & Hidden units & Measure & 1st & 2nd & 3rd & 4th & \textbf{Avg} \\
 \hline
 \end{tabular}
 \caption{Results of 4-holdout validation ($Task\ 2.2$)}
+\label{tab:task2.2}
 \end{table}
 
 \begin{figure}[h]
@@ -319,7 +322,24 @@ Trying to solve the unbalancing of the two classes, we assigned weights to them 
 	\end{minipage}%
 \end{figure}
 
-We can see that using the class weights the classifier manages to find a higher number of malignant samples. We also tried to change the values of the weights to see if you could improve performance further: our idea was to give even more weight to the malignant class, that was considered the most critical. But this approach did not satisfy us, because the network started to give too much importance to the class with the highest weight, and even most benign samples were classified as malignant.
+\begin{table}[h]
+\centering
+\begin{tabular}{|cccccccc|}
+\hline
+Batch size & Hidden units & Measure & 1st & 2nd & 3rd & 4th & \textbf{Avg} \\
+\hline
+\textbf{50} & \textbf{64} & accuracy & 0.59 & 0.54 & 0.61 & 0.62 & \textbf{0.59} \\
+" & " & loss & 0.66 & 0.71 & 0.64 & 0.62 & \textbf{0.66} \\
+" & " & AUC & 0.64 & 0.61 & 0.64 & 0.62 & \textbf{0.63} \\
+" & " & F-score & 0.57 & 0.56 & 0.57 & 0.54 & \textbf{0.56} \\
+\hline
+\end{tabular}
+\caption{Results of 4-holdout validation with the class weights ($Task\ 2.2$)}
+\label{tab:task2.2_weight}
+\end{table}
+
+We can see that using the class weights the classifier manages to find a slightly higher number of malignant samples, at the expense of benign samples. Comparing the holdout validation tables (~\ref{tab:task2.2} and~\ref{tab:task2.2_weight}) we can see that accuracy and loss worsened, while the AUC remained almost unchanged, and the F-score increased by two percentage points. 
+We also tried to change the values of the weights to see if you could improve performance further: our idea was to give even more weight to the malignant class, that was considered the most critical. But this approach did not satisfy us, because the network started to give too much importance to the class with the highest weight, and even most benign samples were classified as malignant.
 
 So our final choice for the final model was the version with the balanced class weights.
 
@@ -413,6 +433,7 @@ The best results were obtained with the following parameters: batch size 32, lea
 
 Fine Tuning:\\
 
+\clearpage
 
 \subsection{Task 3.2: Benign-Malignant discriminator}
 Regarding the classification of benign and malignant we used the same parameters but as we can see from the confusion matrix in figure~\ref{fig:vgg16_matrix} the classifier fails to properly classify malignant samples. To overcome this issue we decided to add a weight for each class, giving more importance to the malignant class. 
@@ -502,8 +523,74 @@ The class weights that we setted were:
 \clearpage
 
 \section{Task 4: Baseline patches}
+For this part of the project, we planned to integrate the baseline patches, the ones extracted from healthy tissues in the mammograms, into the classifiers identified so far. Our goal was to test whether adding the baseline patch samples into the training set would help the model better identify and learn features related to the abnormalities.
+We focused on the classification between mass and calcification. \\
+So we started from the model architecture built from scratch in the $Task\ 2.1$ (fig.~\ref{fig:scratch_model}), and changed the number of output units to $3$. We carried out some tests, modifying the hyper-parameters, to see the effect that the baseline patches had on the network training.
+
+We initially trained with the architecture as it was, using again a batch size of $50$, the softmax as output function, and the Adam optimizer with the default learning rate. Moreover we have maintained the use of data augmentation. The obtained results are found in figures~\ref{fig:4_acc} and~\ref{fig:4_matrix}. We can see that the performance are good, around the $80\%$ of accuracy and F-score, but not as good as the model witouth the baseline. 
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/1_acc}
+		\caption{Accuracy and loss graphs for the model based on the CNN from scratch ($Task\ 4$)}
+		\label{fig:4_acc}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/1_matrix}
+		\caption{Confusion matrix for the test-set predictions}
+		\label{fig:4_matrix}
+	\end{minipage}%
+\end{figure}
+
+We thought this was due to the large imbalance in the dataset: in fact, the number of baseline patch samples was twice as large as the number of masses/calcifications. We therefore performed a subsequent test by rebalancing the class weights:
+\begin{verbatim}
+    weight_for_baseline = (1 / baseline)*(total)/3.0 
+    weight_for_mass = (1 / mass)*(total)/3.0
+    weight_for_calcification = (1 / calcification)*(total)/3.0
+    
+    > Tot. samples: 4549
+    > Bas. samples: 2282, weight: 0.66
+    > Mass samples: 1041, weight: 1.46
+    > Calc samples: 1226, weight: 1.24
+\end{verbatim}
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/2_acc}
+		\caption{Accuracy and loss graphs for the model based on the CNN from scratch ($Task\ 4$)}
+		\label{fig:4_acc_w}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/2_matrix}
+		\caption{Confusion matrix for the test-set predictions}
+		\label{fig:4_matrix_w}
+	\end{minipage}%
+\end{figure}
+
+Here as in other tests, rebalancing the weights did not bring much improvement. However, we can see that mass and calcification classification improved, by $14\%$ and $8\%$ respectively, but at the expense of baseline classification which worsened by $16\%$. What we noticed in general, even in other tests that we did not report, is that calcifications are the abnormalities that are most often confused: in our opinion this is due to the fact that, as the radiologists with whom we were in contact had explained to us, calcifications are much smaller than masses, and consequently it could be more difficult to capture their features for neural networks, and confuse them with other classes.
 
 
+
+\begin{table}
+\centering
+	\begin{tabular}{|cccc|}
+	\hline
+	Model & Test Accuracy & Test Loss & F-score \\
+	\hline
+	batch:50, hidden u:64 & 0.83 & 0.46 & 0.80 \\
+	"    with weights & 0.79 & 0.57 & 0.79 \\
+	\hline
+	\end{tabular}
+\caption{Summary of the performance of the $Task\ 4$ tests}
+\end{table}
 
 \clearpage
 
