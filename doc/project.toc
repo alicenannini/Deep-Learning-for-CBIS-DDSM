@@ -2,13 +2,13 @@
 \contentsline {section}{\numberline {1}Introduction}{1}%
 \contentsline {section}{\numberline {2}The dataset}{1}%
 \contentsline {section}{\numberline {3}Task 1: Related works}{2}%
-\contentsline {section}{\numberline {4}Task 2: From Scratch CNN}{3}%
-\contentsline {subsection}{\numberline {4.1}Data Preprocessing}{3}%
-\contentsline {subsection}{\numberline {4.2}Task 2.1: Mass-Calcification discriminator}{3}%
-\contentsline {subsubsection}{\numberline {4.2.1}Data augmentation}{5}%
-\contentsline {subsection}{\numberline {4.3}Task 2.2: Benign-Malignant discriminator}{6}%
-\contentsline {section}{\numberline {5}Task 3: Pretrained network}{10}%
-\contentsline {subsection}{\numberline {5.1}Task 3.1: Mass-Calcification discriminator}{10}%
-\contentsline {subsection}{\numberline {5.2}Task 3.2: Benign-Malignant discriminator}{13}%
-\contentsline {section}{\numberline {6}Task 4: Baseline patches}{16}%
-\contentsline {section}{\numberline {7}Task 5: Ensemble network}{18}%
+\contentsline {section}{\numberline {4}Data Preprocessing}{3}%
+\contentsline {section}{\numberline {5}Task 2: From Scratch CNN}{3}%
+\contentsline {subsection}{\numberline {5.1}Task 2.1: Mass-Calcification discriminator}{3}%
+\contentsline {subsubsection}{\numberline {5.1.1}Data augmentation}{5}%
+\contentsline {subsection}{\numberline {5.2}Task 2.2: Benign-Malignant discriminator}{6}%
+\contentsline {section}{\numberline {6}Task 3: Pretrained network}{10}%
+\contentsline {subsection}{\numberline {6.1}Task 3.1: Mass-Calcification discriminator}{10}%
+\contentsline {subsection}{\numberline {6.2}Task 3.2: Benign-Malignant discriminator}{13}%
+\contentsline {section}{\numberline {7}Task 4: Baseline patches}{16}%
+\contentsline {section}{\numberline {8}Task 5: Ensemble network}{18}%

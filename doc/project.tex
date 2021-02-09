@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage[english]{varioref}
+\usepackage{csquotes}
 
 \begin{document}
 
@@ -22,31 +23,31 @@
 \baselineskip 12pt
 
 This project includes various analyses and classifications related to mammogram images. \\
-You can refer to these files to verify the code we worked on:\\
-- Task 2.1:
+You can refer to these files to verify the code we worked on:\\ \\
+Task 2.1:
 \begin{itemize}
 \item \textit{Scratch\_CNN\_2.1.1 (no data aug)} is the first implementation
 \item \textit{Scratch\_CNN\_2.1.2 (data aug)} is the implementation with data augmentation
 \item \textit{Scratch\_CNN\_2.1.3 (holdout val)} is the final validation of the best model and the training used for saving the model "scratch\_cnn\_1"
 \end{itemize}
-- Task 2.2:
+Task 2.2:
 \begin{itemize}
 \item \textit{Scratch\_CNN\_2.2.1 (data aug)} is the implementation with data augmentation
 \item \textit{Scratch\_CNN\_2.2.2 (holdout val)} is the final validation of the best model and the training used for saving the model "scratch\_cnn\_2"
 \end{itemize}
-- Task 3.1:
+Task 3.1:
 \begin{itemize}
 \item 
 \end{itemize}
-- Task 3.2:
+Task 3.2:
 \begin{itemize}
 \item 
 \end{itemize}
-- Task 4:
+Task 4:
 \begin{itemize}
-\item 
+\item \textit{Baseline\_CNN\_1} is the implementation of a classification between mass and calcification, using also the baseline patches
 \end{itemize}
-- Task 5:
+Task 5:
 \begin{itemize}
 \item 
 \end{itemize}
@@ -67,21 +68,27 @@ Finally class labels have been assigned to the patches according to the followin
 \section{Task 1: Related works}
 \begin{itemize}
 \item [1] Transfer Learning and Fine Tuning in Breast Mammogram Abnormalities Classification on CBIS-DDSM Database (Lenin G.Falconi, Maria Perez, Wilbert G.Aguilar, Aura Conci) 2020
-\item [2] Automatic Mass Detection in Mammograms Using Deep Convolutional Neural Networks (Richa Agarwal, Oliver Diaz, Xavier Lladó, Moi Hoon Yap, Robert Martí) 2019
-\item [3] Deep Learning for Breast Cancer Diagnosis from Mammograms - A Comparative Study (Lazaros Tsochatzidis, Lena Costaridou, Ioannis Pratikakis) 2019
+\item [2] Deep Learning for Breast Cancer Diagnosis from Mammograms - A Comparative Study (Lazaros Tsochatzidis, Lena Costaridou, Ioannis Pratikakis) 2019
+\item [3] Automatic Mass Detection in Mammograms Using Deep Convolutional Neural Networks (Richa Agarwal, Oliver Diaz, Xavier Lladó, Moi Hoon Yap, Robert Martí) 2019
 \item [4] Multi-View Feature Fusion Based Four Views Model for Mammogram Classification Using Convolutional Neural Network (Hasan Nasir Khan, Ahmad Raza Shahid, Basit Raza,
 Amir Hanif Dar, Hani Alquhayz) 2019
 \end{itemize}
 
+The first paper, working on our same dataset, deals with the classification of abnormalities using ImageNet pretrained convolutional networks, with the technique of transfer learning (TL) but also fine tuning (FT). The authors specify that the main obstacle for this kind of problem is that there are not yet mammogram public datasets that are quite extensive and "deep", and consequently if we have few data it is difficult to avoid overfitting. The proposed approach, both with TL and FT, consists in replacing the last fully connecting layer related to the original ImageNet classification task with a set of layer: Global Average Pooling 2D, Full Connecting, Dropout, and Classification Layer. They focused on ìly on the masses images, that are initially pre-processed to enhance contrast, then normalized between 0 and 255, and finally rearranged by data augmentation. The dataset was increased to a total of 60.000 images, where 80\% are used for training, 10\% for validation, and 10\% for testing. Looking at the results of TL, they obtained the best AUC with the Resnet-50, that although overfitted. On the other hand, both VGG16 and VGG19 did not presented overfitting but their classification performance were lower. Regarding to FT instead, the best resultes were obtained by VGG16, unfreezed once from the 8th layer and once from the 10th layer, and by VGG19, unfreezed from the 17th layer.
+
+In the second paper, the authors worked on both the CBIS-DDSM dataset and another dataset, the DDSM-400, again to perform a classification of masses between benign and malignant. The initial approach presented is based on training networks from scratch (starting from the Glorot initialization), while later an approach using networks pretrained on the ImageNet datased is presented. They used data augmentation, in particular rotation and flipping transformations, performed online. 
+The best results were achieved with CNNs trained under the fine tuning scenario: maximum performance is found with Resnet-50 and Resnet-101. Regarding the networks from scratch, the authors explain that the lowest results are due to the limited number of samples in the analyzed dataset: they say that in these cases \enquote{effective training of larger and complex networks cannot be achieved}.
+
+In the third paper, a patch detector was initially developed, again from the CBIS-DDSM dataset, giving as input to the tested networks patches of abnormal and baseline tissue extracted from mammograms. The authors have used the pretrained networks VGG16, Resnet-50, and InceptionV3, with a transfer learning approach. Since the available images were in black and white, they were replicated on three channels to be compatible with the ImageNet pretrained networks. In addition, the data were augmented on-the-fly using horizontal flipping, rotation, and rescaling. The results of training the CNN on CBIS-DDSM demonstrated that the feature domain of the CNN can be well adapted from natural images to classify masses in mammograms. The best performance were obtained with the InceptionV3.
+
+The last paper were studied mostly for the preprocessing of the data. The experiments in this paper are carried on the CBIS-DDMS and mini-MIAS public databases. First of all, the authors performed some pre-processing steps like rescaling, bilateral filtering, contrast enhancement, on the data for achieving better performance. Then they applied data augmentation transformations to minimize the effect of overfitting, getting a dataset seven times bigger than the original one. Starting from some CNN architectures for training and fine tuning, the authors made adaptations for classification of mammograms on different levels (i.e. normal/abnormal, mass/calcification, and malignant/benign). 
+
 
 \clearpage
 
-\section{Task 2: From Scratch CNN}
-We developed different models of neural networks to work with the given dataset from scratch and we did different tests to find the better hyperparameters to build the final model. This section is divided in three parts: in the first one we describe the main preprocessing applied to the data before the training of the models. Then we show how we built a model for classifying the dataset images between \textit{mass} abnormality and \textit{calfication} abnormality. In the last part, we describe the model built to classify between \textit{benign} and \textit{malignant} abnormalities.
-
-\subsection{Data Preprocessing}
-Starting from the numpy arrays of the dataset images we were given, first of all we deleted all the samples associated with the \textit{baseline patch} label. Since this labeled images were placed in the even positions of the dataset, we just selected all the odd-index samples and discard the others. This is done both for the training data and the test data. \\
-Then we aggregated the labels according to the classification that we needed to do: in the $Task\ 2.1$ the classes \textit{mass benign} and  \textit{mass malignant} were aggregated in a unique class \textit{mass}, and so for the \textit{calcification} classes. On the other hand, in the $Task\ 2.2$ we aggregated  \textit{mass benign} and  \textit{cacification benign} in the \textit{benign} class, and the other labels in the \textit{malignant} class.
+\section{Data Preprocessing}
+In this section we describe the main preprocessing applied to the data before the training of the models. Starting from the numpy arrays of the dataset images we were given, first of all we deleted all the samples associated with the \textit{baseline patch} label. Since this labeled images were placed in the even positions of the dataset, we just selected all the odd-index samples and discard the others. This is done both for the training data and the test data. \\
+Then we aggregated the labels according to the classification that we needed to do: in the $Task\ 2.1$ and $3.1$ the classes \textit{mass benign} and  \textit{mass malignant} were aggregated in a unique class \textit{mass}, and so for the \textit{calcification} classes. On the other hand, in the $Task\ 2.2$ and $3.2$ we aggregated  \textit{mass benign} and  \textit{cacification benign} in the \textit{benign} class, and the other labels in the \textit{malignant} class.
 
 \begin{figure}[h]
 \centering
@@ -96,6 +103,10 @@ Then we aggregated the labels according to the classification that we needed to 
 For the first case, we can see from the figure that the labels are pretty much equally distributed. Instead, in the second case the dataset is a little more unbalanced towards the \textit{benign} class. \\
 Finally, we reshaped all the training images tensors in a single \textit{numpy} array, that has been then normalized. The same has been done for the test images. 
 %With regards to the labels, they has been categorizated so that is possible to use the categorical loss function in the model.
+
+
+\section{Task 2: From Scratch CNN}
+We developed different models of neural networks to work with the given dataset from scratch and we did different tests to find the better hyperparameters to build the final model. This section is divided in two parts: i ìn the first one we show how we built a model for classifying the dataset images between \textit{mass} abnormality and \textit{calfication} abnormality, while in the second part we describe the model built to classify between \textit{benign} and \textit{malignant} abnormalities.
 
 \subsection{Task 2.1: Mass-Calcification discriminator}
 We first tried to build a simple CNN, with some convolutional and max-pooling layers, and two final dense layers. We trained and tested the model several times, changing the hyperparameters to find a good model for our problem. The final architecture that has been used for the most relevant tests is shown in figure~\ref{fig:scratch_model}. It is made of five convolutional layers, with an increasing number of kernels. Each layer is followed by a max-pooling of $2x2$, except for the last one so that the input of the dense layer is not too reduced. The activation function used in the layers is \textit{ReLu}.
@@ -176,7 +187,7 @@ Batch size & Hidden units & Test accuracy & Test loss & AUC & F-score \\
 \end{table}
 
 Before saving the model, we performed a $4$-holdout validation analysis to make sure that the performance remained similar to the values obtained in the previous test. 
-This validation led us to change our mind, because the network with only $64$ hidden neurons at the FC layer started the learning phase too slowly in most cases. We eventually opted for the network with $256$ hidden neurons and batch size of $50$. The results of the $4$-holdout validation on this model are shown below.
+This analysis confirmed the goodness of the model: the results of the $4$-holdout validation are shown below.
 
 \clearpage
 
