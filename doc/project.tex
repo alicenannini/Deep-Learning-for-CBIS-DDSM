@@ -170,7 +170,7 @@ All the tests were done with a maximum of $100$ epochs, using the early stopping
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|cccccc|}
+\begin{tabular}{|cc|cccc|}
 \hline
 Batch size & Hidden units & Test accuracy & Test loss & AUC & F-score \\
 \hline
@@ -268,22 +268,6 @@ We tried to change the architecture of the model again, looking for a structure 
 
 \clearpage
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|cccccccc|}
-\hline
-Batch size & Hidden units & Measure & 1st & 2nd & 3rd & 4th & \textbf{Avg} \\
-\hline
-\textbf{50} & \textbf{64} & accuracy & 0.64 & 0.66 & 0.67 & 0.65 & \textbf{0.66} \\
-" & " & loss & 0.64 & 0.61 & 0.60 & 0.63 & \textbf{0.62} \\
-" & " & AUC & 0.64 & 0.63 & 0.64 & 0.64 & \textbf{0.64} \\
-" & " & F-score & 0.56 & 0.53 & 0.53 & 0.54 & \textbf{0.54} \\
-\hline
-\end{tabular}
-\caption{Results of 4-holdout validation ($Task\ 2.2$)}
-\label{tab:task2.2}
-\end{table}
-
 \begin{figure}[h]
 \centering
 	\begin{minipage}[c]{.4\textwidth}
@@ -301,6 +285,22 @@ Batch size & Hidden units & Measure & 1st & 2nd & 3rd & 4th & \textbf{Avg} \\
 	\end{minipage}%
 \end{figure}
 
+\begin{table}[h]
+\centering
+\begin{tabular}{|cccccccc|}
+\hline
+Batch size & Hidden units & Measure & 1st & 2nd & 3rd & 4th & \textbf{Avg} \\
+\hline
+\textbf{50} & \textbf{64} & accuracy & 0.64 & 0.66 & 0.67 & 0.65 & \textbf{0.66} \\
+" & " & loss & 0.64 & 0.61 & 0.60 & 0.63 & \textbf{0.62} \\
+" & " & AUC & 0.64 & 0.63 & 0.64 & 0.64 & \textbf{0.64} \\
+" & " & F-score & 0.56 & 0.53 & 0.53 & 0.54 & \textbf{0.54} \\
+\hline
+\end{tabular}
+\caption{Results of 4-holdout validation ($Task\ 2.2$)}
+\label{tab:task2.2}
+\end{table}
+
 The results (fig.~\ref{fig:accuracy_2.2_1} and~\ref{fig:matrix_2.2_1}) in terms of accuracy and loss were very similar to the previous model, but we can see from the confusion matrix that the \textit{malignant} class was better predicted and we considered it as a good result.
 As we can see from the table, the main problem is the value of the \textit{F-score}, that indicates a very unbalanced classification.\\
 
@@ -316,6 +316,13 @@ Trying to solve the unbalancing of the two classes, we assigned weights to them 
     > Weight for benign: 0.85
     > Weight for malignant: 1.22
 \end{verbatim}
+
+\clearpage
+
+We can see that using the class weights the classifier managed to find a slightly higher number of malignant samples, at the expense of benign samples. Comparing the holdout validation tables (~\ref{tab:task2.2} and~\ref{tab:task2.2_weight}) we can see that accuracy and loss worsened, while the AUC remained almost unchanged, and the F-score increased by two percentage points. 
+We also tried to change the values of the weights to see if you could improve performance further: our idea was to give even more weight to the malignant class, that was considered the most critical. But this approach did not satisfy us, because the network started to give too much importance to the class with the highest weight, and even most benign samples were classified as malignant. \\
+
+So our choice for the final model was the version without the balanced class weights: although the F-score was higher in the one with the class weights, it paid with too much decrease of accuracy and too much increase of loss.
 
 \begin{figure}[h]
 \centering
@@ -350,11 +357,6 @@ Batch size & Hidden units & Measure & 1st & 2nd & 3rd & 4th & \textbf{Avg} \\
 \label{tab:task2.2_weight}
 \end{table}
 
-We can see that using the class weights the classifier manages to find a slightly higher number of malignant samples, at the expense of benign samples. Comparing the holdout validation tables (~\ref{tab:task2.2} and~\ref{tab:task2.2_weight}) we can see that accuracy and loss worsened, while the AUC remained almost unchanged, and the F-score increased by two percentage points. 
-We also tried to change the values of the weights to see if you could improve performance further: our idea was to give even more weight to the malignant class, that was considered the most critical. But this approach did not satisfy us, because the network started to give too much importance to the class with the highest weight, and even most benign samples were classified as malignant.
-
-So our final choice for the final model was the version with the balanced class weights.
-
 
 \clearpage
 
@@ -379,7 +381,8 @@ The second one, called Fine Tuning is similar. The main difference was that the 
 The results obtained with \textit{Resnet-50} were not reported in this paper, because they weren't significant.
 
 \subsection{Task 3.1: Mass-Calcification discriminator}
-In all our tests we applied Data Augmentation because we ran into an overfitting problem. Two more variations for each image were added and we obtained improved results, in particular, overtraining has been significantly reduced. The batch size value range that achieved higher performance is between $32$ and $64$. Lower values led to high oscillations of both the training and validation loss/accuracy. For the learning rate, after testing values from 1e-4 to 1e-6, we ended up using the value of 1e-5. After testing different activation functions we ended up using “sigmoid” for the output. 
+In all our tests we applied Data Augmentation because we ran into an overfitting problem.
+We built a new larger training set, starting from the original images and adding two more variations for each image. Thanks to this approach, we obtained improved results, in particular overtraining has been significantly reduced. The batch size value range that achieved higher performance is between $32$ and $64$. Lower values led to high oscillations of both the training and validation loss/accuracy. For the learning rate, after testing values from 1e-4 to 1e-6, we ended up using the value of 1e-5. After testing different activation functions we ended up using “sigmoid” for the output. 
 
 \begin{figure}[h]
 \centering
@@ -400,14 +403,14 @@ In all our tests we applied Data Augmentation because we ran into an overfitting
 \subsubsection{Feature Extraction}
 We have reported the final architecture built from the \textbf{VGG16} base in figure~\ref{fig:vgg16_model}. 
 The best results were obtained with the following parameters: batch size 32, learning rate 1e-5. \\
-Also from the VGG19 convolutional base, whose architecture can be found in figure~\ref{fig:vgg19_model}, we achieved the best results with a batch size of 32 and a learning rate of 1e-5. \\
+Also from the \textbf{VGG19} convolutional base, whose architecture can be found in figure~\ref{fig:vgg19_model}, we achieved the best results with a batch size of 32 and a learning rate of 1e-5. \\
 The significant results achieved are summarized in the figures~\ref{fig:vgg16_3.1_matrix_fe} and~\ref{fig:vgg19_3.1_matrix_fe}, and in the table~\ref{tab:task3.1_fe}.
 
 \begin{figure}[h]
 \centering
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.1/FT/Accuracy}
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.1/FE/Accuracy}
 	\end{minipage}	
 	\hspace{5mm}%
 	\begin{minipage}[c]{.4\textwidth}
@@ -417,7 +420,7 @@ The significant results achieved are summarized in the figures~\ref{fig:vgg16_3.
 	
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.1/FT/Conf_Matrix}
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.1/FE/Conf_Matrix}
 		\caption{Performance for the model based on VGG16, with feature extraction}
 		\label{fig:vgg16_3.1_matrix_fe}
 	\end{minipage}
@@ -436,10 +439,10 @@ The significant results achieved are summarized in the figures~\ref{fig:vgg16_3.
 \hline
 Model & Batch size & Test Acc & Test Loss & AUC & F-score \\
 \hline
-VGG16 & 32 & 0.87 & 0.34 & 0.87 & 0.85 \\
-" & 64 & 0.86 & 0.34 & 0.86 & 0.85 \\
+\textbf{VGG16} & 32 & \textbf{0.88} & \textbf{0.33} & \textbf{0.87} & \textbf{0.86} \\
+" 	  & 64 & 0.86 & 0.34 & 0.86 & 0.85 \\
 VGG19 & 32 & 0.85 & 0.37 & 0.85 & 0.83  \\
-" & 64 & 0.84 & 0.37 & 0.84 & 0.83 \\
+" 	  & 64 & 0.84 & 0.37 & 0.84 & 0.83 \\
 \hline
 \end{tabular}
 \caption{Results of Feature Extraction ($Task\ 3.1$)}
@@ -451,10 +454,9 @@ VGG19 & 32 & 0.85 & 0.37 & 0.85 & 0.83  \\
 \clearpage
 
 \subsubsection{Fine Tuning}
-We also ran tests using the fine-tuning approach to see if we could increase classification performance. \\
-Referring again to the paper [1], we tested VGG16 and VGG19, which gave the best results.
+We also ran tests using the fine-tuning approach to see if we could increase classification performance.
 
-As for VGG16, we started from the architecture in figure~\ref{fig:vgg16_model} and we carried out two different runs: the first unfreezing the pretrained network from the 5th block, while in the second the network is unfreezed from the 4th block. The results we obtained in these two cases were very similar, leading us to think that between the two would be better the first model, since for an accuracy almost equal had less parameters to train. \\
+As for VGG16, we started from the architecture in figure~\ref{fig:vgg16_model} and we carried out two different runs: the first unfreezing the pretrained network from the 5th block, while in the second the network is unfreezed from the 4th block. The results we obtained in these two cases were very similar, leading us to think that between the two would be better the first model, since it had less parameters to train. \\
 Since the network tended to overtrain, we tried adding a dropout level between the two FC levels, with a rate of $0.5$. The resulting outputs showed a decrease in overtraining, as we can observe in figures~\ref{fig:vgg16_3.1_matrix_ft} and~\ref{fig:vgg16_3.1_matrix_ft_d}. 
 
 \begin{figure}[h]
@@ -484,7 +486,11 @@ Since the network tended to overtrain, we tried adding a dropout level between t
 	\end{minipage}
 \end{figure}
 
-Finally, we re-trained VGG19, unfreezed from the 5th block: again, performance was good, both with and without the dropout level. We reported a summary of all the obtained performances in table~\ref{tab:task3.1_ft}.
+Finally we re-trained VGG19, unfreezed from the 5th block: again performance was good, both with and without the dropout level. We reported a summary of all the obtained performances in the table~\ref{tab:task3.1_ft}. \\
+
+For the final model, we saved the architecture based on VGG16, unfreezed from block 5, with the dropout level.
+
+\clearpage
 
 \begin{table}[h]
 \centering
@@ -492,105 +498,94 @@ Finally, we re-trained VGG19, unfreezed from the 5th block: again, performance w
 \hline
 Model & Unfreezed block & Dropout & Test Acc & Test Loss & AUC & F-score \\
 \hline
-VGG16 & 5 & no & 0.89 & 0.34 & 0.89 & 0.88 \\
-" & " & 0.5 & 0.89 & 0.33 & 0.89 & 0.88 \\
-VGG16 & 4 & no & 0.88 & 0.32 & 0.88 & 0.88 \\
-" & " & 0.5 &  0.89 & 0.31 & 0.89 & 0.88 \\
-VGG19 & 5 & no & 0.85 & 0.36 & 0.85 & 0.84 \\
-" & " & 0.5 & 0.85 & 0.36 & 0.85 & 0.84 \\
+VGG16 & 5 & -   & 0.89 & 0.34 & 0.89 & 0.88 \\
+\textbf{VGG16} & \textbf{5} & \textbf{0.5} & \textbf{0.89} & \textbf{0.33} & \textbf{0.89} & \textbf{0.88} \\
+VGG16 & 4 & -   & 0.88 & 0.32 & 0.88 & 0.88 \\
+VGG16 & 4 & 0.5 & 0.89 & 0.31 & 0.89 & 0.88 \\
+VGG19 & 5 & -   & 0.85 & 0.36 & 0.85 & 0.84 \\
+VGG19 & 5 & 0.5 & 0.85 & 0.36 & 0.85 & 0.84 \\
 \hline
 \end{tabular}
 \caption{Results of Fine Tuning ($Task\ 3.1$)}
 \label{tab:task3.1_ft}
 \end{table}
 
-For the final model, we saved the architecture based on VGG16, unfreezed from block 5, with the dropout level.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Task 3.2: Benign-Malignant discriminator}
+Regarding the classification of benign and malignant abnormalities, we used the same parameters but initially the classifier failed to properly classify malignant samples. To overcome this issue we decided to modify the weight for each class: at first we set the class weights to balance the dataset, but this wasn't improving the performance of the network. So we decided to set them heuristically giving more importance to the malignant class. 
+
+\subsubsection{Feature Extraction}
+Using the \textbf{VGG16} convolutional base, the best results were obtained with the following parameters: batch size 64, learning rate 1e-5. We trained the model for 100 epochs, using an Early Stop callback with a patience of 10. These same parameters were also used for the tests with the \textbf{VGG19} base, and then for the tests with the class weights. The results are summarized in the table~\ref{tab:task3.2_fe}. \\
+Using both the VGG16 and VGG19 models, we set the weight for the benign class at $1.0$, while the one for the malignant class was set to $1.25$.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|cc|cccc|}
+\hline
+Model & Weights & Test Acc & Test Loss & AUC & F-score \\
+\hline
+VGG16 & -		   & 0.66 & 0.59 & 0.63 & 0.52 \\
+\textbf{VGG16} & \textbf{[1.0,1.25]} & \textbf{0.68} & \textbf{0.59} & \textbf{0.64} & \textbf{0.54} \\
+VGG19 & - 		   & 0.67 & 0.61 & 0.62 & 0.48 \\
+VGG19 & [1.0,1.25] & 0.67 & 0.61 & 0.62 & 0.48 \\
+\hline
+\end{tabular}
+\caption{Results of Feature Extraction ($Task\ 3.2$)}
+\label{tab:task3.2_fe}
+\end{table}
+
+
+\subsubsection{Fine Tuning}
+Since the obtained results were not very good, we decided to also try the fine tuning approach. \\
+Again, we ran several tests: initially we found an overtraining problem, and for this reason, we tried to insert a dropout level before the final dense level. The dropout rate was set to $0.5$. The performance improved a bit. The table~\ref{tab:task3.2_ft} shows the most significant test results. \\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|cccc|cccc|}
+\hline
+Model & Unfreezed block & Dropout & Weights & Test Acc & Test Loss & AUC & F-score \\
+\hline
+VGG16 & 5 & 0.5 & [1.0,1.25] & 0.66 & 0.60 & 0.61 & 0.47 \\
+VGG16 & 5 & 0.5 & - 	     & 0.68 & 0.60 & 0.61 & 0.47 \\
+\textbf{VGG19} & \textbf{5} & \textbf{0.5} & \textbf{[1.0,1.25]} & \textbf{0.65} & \textbf{0.62} & \textbf{0.63} & \textbf{0.53} \\
+VGG19 & 5 & 0.5 & -	   	     & 0.66 & 0.62 & 0.63 & 0.52 \\
+\hline
+\end{tabular}
+\caption{Results of Fine Tuning ($Task\ 3.2$)}
+\label{tab:task3.2_ft}
+\end{table}
 
 \clearpage
 
-\subsection{Task 3.2: Benign-Malignant discriminator}
-Regarding the classification of benign and malignant we used the same parameters but as we can see from the confusion matrix in figure~\ref{fig:vgg16_matrix} the classifier fails to properly classify malignant samples. To overcome this issue we decided to add a weight for each class, giving more importance to the malignant class. 
+As we can observe from the previous summary tables, with regard to the technique of feature extraction the model that has resulted better is the one based on VGG16 with the class weights, while for the fine tuning the best one is based on VGG19, again with the class weights. The graphs of accuracy and loss trends, together with the confusion matrices of these two models, are found in the figures~\ref{fig:vgg16_3.2} and~\ref{fig:vgg19_3.2}. Between the two, as final model, we chose the VGG16-based, because in addition to have better performance it presented less overfitting.
 
-Using the \textbf{VGG16} convolutional base, the best results were obtained with the following parameters: batch size 50, learning rate 1e-5. We obtained an accuracy of XXX after training for 100 epochs. 
 
 \begin{figure}[h]
 \centering
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/Without Weights/Accuracy}
-		\caption{Accuracy and loss graphs for the model based on VGG16, without weights}
-		\label{fig:vgg16_3.2_accuracy}
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/Accuracy}
+	\end{minipage}	
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/Accuracy}
+	\end{minipage}
+	
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/Conf_Matrix}
+		\caption{Performance for the \textbf{VGG16} based model, with FT and class weights}
+		\label{fig:vgg16_3.2}
 	\end{minipage}
 	\hspace{5mm}%
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/Without Weights/Conf Matrix}
-		\caption{Confusion matrix for the test-set predictions, without weights}
-		\label{fig:vgg16_3.2_matrix}
-	\end{minipage}%
-\end{figure}
-
-The class weights that we setted were: 
-\begin{verbatim}
-    class_weight =  { 0: 1, 1: 1.25}
-\end{verbatim}
-
-\begin{figure}[h]
-\centering
-	\begin{minipage}[c]{.4\textwidth}
-		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/With Weights/Accuracy}
-		\caption{Accuracy and loss graphs for the model based on VGG16, with weights}
-		\label{fig:vgg16_3.2_accuracy}
+		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/Conf_Matrix}
+		\caption{Performance for the \textbf{VGG19} based model, with FT and class weights}
+		\label{fig:vgg19_3.2}
 	\end{minipage}
-	\hspace{5mm}%
-	\begin{minipage}[c]{.4\textwidth}
-		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/With Weights/Conf Matrix}
-		\caption{Confusion matrix for the test-set predictions, with weights}
-		\label{fig:vgg16_3.2_matrix}
-	\end{minipage}%
-\end{figure}
-
-Instead, using the VGG19 convolutional base, the best results were obtained with the following parameters: batch size 32, learning rate 1e-5. We obtained an accuracy of XXX after training for 65epochs. 
-
-\begin{figure}[h]
-\centering
-	\begin{minipage}[c]{.4\textwidth}
-		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/Without Weights/Accuracy}
-		\caption{Accuracy and loss graphs for the model based on VGG19, without weights}
-		\label{fig:vgg19_3.2_accuracy}
-	\end{minipage}
-	\hspace{5mm}%
-	\begin{minipage}[c]{.4\textwidth}
-		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/Without Weights/Conf Matrix}
-		\caption{Confusion matrix for the test-set predictions, without weights}
-		\label{fig:vgg19_3.2_matrix}
-	\end{minipage}%
-\end{figure}
-
-The class weights that we setted were: 
-\begin{verbatim}
-    class_weight =  { 0: 1, 1: 1.2}
-\end{verbatim}
-
-\begin{figure}[h]
-\centering
-	\begin{minipage}[c]{.4\textwidth}
-		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/With Weights/Accuracy}
-		\caption{Accuracy and loss graphs for the model based on VGG19, with weights}
-		\label{fig:vgg19_3.2_accuracy}
-	\end{minipage}
-	\hspace{5mm}%
-	\begin{minipage}[c]{.4\textwidth}
-		\centering\setlength{\captionmargin}{0pt}%
-		\includegraphics[width=.9\textwidth]{images/Task 3/VGG19 3.2/With Weights/Conf Matrix}
-		\caption{Confusion matrix for the test-set predictions, with weights}
-		\label{fig:vgg19_3.2_matrix}
-	\end{minipage}%
 \end{figure}
 
 \clearpage
@@ -661,6 +656,77 @@ Here as in other tests, rebalancing the weights did not bring much improvement. 
 	\hline
 	\end{tabular}
 \caption{Summary of the performance of the $Task\ 4$ tests}
+\end{table}
+
+\subsection{Siamese Network}
+Since the previous approach did not bring the expected results, we tried another approach, based on the architecture called Siamese Network. The idea was to send as input to the two identical networks of the model pairs of images, respectively to one a baseline patch and to the other an abnormality patch (mass or calcification).
+
+At the output of the Flatten layer of the two common networks, we obtained the features extracted from the input and with a Lambda layer we performed the subtraction between the abnormality and baseline patch features. Our hope was that, from this difference, the most relevant features would be highlighted and the classification between masses and calcifications would improve. \\
+The final architecture we used is shown in figure~\ref{fig:siamese_model}: we started from the convolutional base of VGG16, keeping all blocks frozen. The we did an additional test, trying to unfreeze the convolutional base from the 5th block. The results of these tests are shown in the figures~\ref{fig:siamese_fe} and~\ref{fig:siamese_ft}: note that the Early Stop callback was used with a patience of 10 and with the best weights restoring mode activated.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.5\textwidth]{images/4.1/Siamese/Model}
+\caption{Architecture of the Siamese Network}
+\label{fig:siamese_model}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.35\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Accuracy_fe}
+		\caption{Accuracy and loss graphs for the Siamese Network (feature extraction)}
+		\label{fig:scratch_accuracy}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.35\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Conf_Matrix_fe}
+		\caption{Confusion matrix for the test-set predictions}
+		\label{fig:scratch_matrix}
+	\end{minipage}%
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/AccuracyFT}
+	\end{minipage}	
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/AccuracyFT_drop}
+	\end{minipage}
+	
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Conf_MatrixFT}
+		\caption{Performance for the Siamese Network, with FT}
+		\label{fig:siamese_fe}
+	\end{minipage}
+	\hspace{5mm}%
+	\begin{minipage}[c]{.4\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Conf_MatrixFT_drop}
+		\caption{Performance for the Siamese Network, with FT and dropout}
+		\label{fig:siamese_ft}
+	\end{minipage}
+\end{figure}
+
+\begin{table}
+\centering
+	\begin{tabular}{|ccc|cccc|}
+	\hline
+	Model & Unfreezed block & Dropout & Test Accuracy & Test Loss & AUC & F-score \\
+	\hline
+	VGG16 & - & -   & 0.86 & 0.34 & 0.86 & 0.85 \\
+	"     & 5 & -   & 0.87 & 0.33 & 0.87 & 0.86 \\
+	"	  & 5 & 0.5 & 0.87 & 0.34 & 0.87 & 0.86 \\
+	\hline
+	\end{tabular}
+\caption{Summary of the performance of the Siamese Network tests}
 \end{table}
 
 \clearpage

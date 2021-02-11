@@ -11,6 +11,9 @@
 \contentsline {subsection}{\numberline {6.1}Task 3.1: Mass-Calcification discriminator}{10}%
 \contentsline {subsubsection}{\numberline {6.1.1}Feature Extraction}{11}%
 \contentsline {subsubsection}{\numberline {6.1.2}Fine Tuning}{12}%
-\contentsline {subsection}{\numberline {6.2}Task 3.2: Benign-Malignant discriminator}{14}%
-\contentsline {section}{\numberline {7}Task 4: Baseline patches}{17}%
+\contentsline {subsection}{\numberline {6.2}Task 3.2: Benign-Malignant discriminator}{13}%
+\contentsline {subsubsection}{\numberline {6.2.1}Feature Extraction}{13}%
+\contentsline {subsubsection}{\numberline {6.2.2}Fine Tuning}{13}%
+\contentsline {section}{\numberline {7}Task 4: Baseline patches}{15}%
+\contentsline {subsection}{\numberline {7.1}Siamese Network}{16}%
 \contentsline {section}{\numberline {8}Task 5: Ensemble network}{19}%
