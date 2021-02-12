@@ -526,7 +526,7 @@ Using both the VGG16 and VGG19 models, we set the weight for the benign class at
 Model & Weights & Test Acc & Test Loss & AUC & F-score \\
 \hline
 VGG16 & -		   & 0.66 & 0.59 & 0.63 & 0.52 \\
-\textbf{VGG16} & \textbf{[1.0,1.25]} & \textbf{0.68} & \textbf{0.59} & \textbf{0.64} & \textbf{0.54} \\
+\textbf{VGG16} & \textbf{[1.0,1.25]} & \textbf{0.69} & \textbf{0.58} & \textbf{0.64} & \textbf{0.52} \\
 VGG19 & - 		   & 0.67 & 0.61 & 0.62 & 0.48 \\
 VGG19 & [1.0,1.25] & 0.67 & 0.61 & 0.62 & 0.48 \\
 \hline
@@ -576,7 +576,7 @@ As we can observe from the previous summary tables, with regard to the technique
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/Task 3/VGG16 3.2/Conf_Matrix}
-		\caption{Performance for the \textbf{VGG16} based model, with FT and class weights}
+		\caption{Performance for the \textbf{VGG16} based model, with FE and class weights}
 		\label{fig:vgg16_3.2}
 	\end{minipage}
 	\hspace{5mm}%
@@ -732,6 +732,80 @@ The final architecture we used is shown in figure~\ref{fig:siamese_model}: we st
 \clearpage
 
 \section{Task 5: Ensemble network}
+For the last task, we took the best models saved so far and merged them into a single network with a final additional layer, averaging over the outputs. This procedure was performed for both the mass-calcification classification and the benign-malignant classification.
 
+\subsection{Mass-Calcification discriminator}
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.9\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/5/1_model}
+		\caption{ Ensemble network for the mass-calcification classification}
+	\end{minipage}
+	
+	\begin{minipage}[c]{.45\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/5/1_accuracy}
+	\end{minipage}	
+	\hspace{5mm}%
+	\begin{minipage}[c]{.45\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/5/1_matrix}
+	\end{minipage}
+\end{figure}
+
+\begin{table}[h]
+\centering
+	\begin{tabular}{|c|ccc|}
+	\hline
+	Model & Test Accuracy & AUC & F-score \\
+	\hline
+	scratch\_model 		  & 0.87 & 0.87 & 0.86 \\
+	pretrained\_model\_FT & 0.89 & 0.89 & 0.88 \\
+	pretrained\_model\_FE & 0.88 & 0.87 & 0.86 \\
+	\textbf{ensemble}     & \textbf{0.89} & \textbf{0.89} & \textbf{0.88} \\
+	\hline
+	\end{tabular}
+\caption{Single model performance vs Ensemble performance}
+\end{table}
+
+\clearpage
+
+\subsection{Benign-Malignant discriminator}
+
+\begin{figure}[h]
+\centering
+	\begin{minipage}[c]{.9\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/5/2_model}
+		\caption{ Ensemble network for the benign-malignant classification}
+	\end{minipage}
+	
+	\begin{minipage}[c]{.45\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/5/2_accuracy}
+	\end{minipage}	
+	\hspace{5mm}%
+	\begin{minipage}[c]{.45\textwidth}
+		\centering\setlength{\captionmargin}{0pt}%
+		\includegraphics[width=.9\textwidth]{images/5/2_matrix}
+	\end{minipage}
+\end{figure}
+
+\begin{table}[h]
+\centering
+	\begin{tabular}{|c|ccc|}
+	\hline
+	Model & Test Accuracy & AUC & F-score \\
+	\hline
+	scratch\_model 			& 0.65 & 0.64 & 0.54 \\
+	scratch\_model\_weights & 0.62 & 0.62 & 0.54 \\
+	pretrained\_model\_FE   & 0.69 & 0.64 & 0.52 \\
+	\textbf{ensemble} 		& \textbf{0.68} & \textbf{0.66} & \textbf{0.56} \\
+	\hline
+	\end{tabular}
+\caption{Single model performance vs Ensemble performance}
+\end{table}
 
 \end{document}

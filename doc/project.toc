@@ -17,3 +17,5 @@
 \contentsline {section}{\numberline {7}Task 4: Baseline patches}{15}%
 \contentsline {subsection}{\numberline {7.1}Siamese Network}{16}%
 \contentsline {section}{\numberline {8}Task 5: Ensemble network}{19}%
+\contentsline {subsection}{\numberline {8.1}Mass-Calcification discriminator}{19}%
+\contentsline {subsection}{\numberline {8.2}Benign-Malignant discriminator}{20}%

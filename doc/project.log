@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  11 FEB 2021 19:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  12 FEB 2021 12:14
 entering extended mode
 **./project.tex
 (project.tex
@@ -523,24 +523,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 540--542
 [13
 
 ]
-<images/Task 3/VGG16 3.2/Accuracy.png, id=101, 289.83281pt x 395.97937pt>
+<images/Task 3/VGG16 3.2/Accuracy.png, id=101, 284.56313pt x 395.97937pt>
 File: images/Task 3/VGG16 3.2/Accuracy.png Graphic file (type png)
 <use images/Task 3/VGG16 3.2/Accuracy.png>
 Package pdftex.def Info: images/Task 3/VGG16 3.2/Accuracy.png  used on input li
 ne 568.
-(pdftex.def)             Requested size: 169.00563pt x 230.90079pt.
+(pdftex.def)             Requested size: 169.00563pt x 235.18468pt.
 <images/Task 3/VGG19 3.2/Accuracy.png, id=102, 292.84406pt x 399.74344pt>
 File: images/Task 3/VGG19 3.2/Accuracy.png Graphic file (type png)
 <use images/Task 3/VGG19 3.2/Accuracy.png>
 Package pdftex.def Info: images/Task 3/VGG19 3.2/Accuracy.png  used on input li
 ne 573.
 (pdftex.def)             Requested size: 169.00563pt x 230.71072pt.
-<images/Task 3/VGG16 3.2/Conf_Matrix.png, id=103, 255.95625pt x 222.07968pt>
+<images/Task 3/VGG16 3.2/Conf_Matrix.png, id=103, 255.95625pt x 216.81pt>
 File: images/Task 3/VGG16 3.2/Conf_Matrix.png Graphic file (type png)
 <use images/Task 3/VGG16 3.2/Conf_Matrix.png>
 Package pdftex.def Info: images/Task 3/VGG16 3.2/Conf_Matrix.png  used on input
  line 578.
-(pdftex.def)             Requested size: 169.00563pt x 146.63742pt.
+(pdftex.def)             Requested size: 169.00563pt x 143.15788pt.
 <images/Task 3/VGG19 3.2/Conf_Matrix.png, id=104, 250.68657pt x 224.33812pt>
 File: images/Task 3/VGG19 3.2/Conf_Matrix.png Graphic file (type png)
 <use images/Task 3/VGG19 3.2/Conf_Matrix.png>
@@ -635,18 +635,54 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Model.png>] [17 <./images/4.1/Siamese/Accuracy_fe.png> <./images/4.1/Siamese/Co
 nf_Matrix_fe.png>] [18 <./images/4.1/Siamese/AccuracyFT.png> <./images/4.1/Siam
 ese/AccuracyFT_drop.png> <./images/4.1/Siamese/Conf_MatrixFT.png> <./images/4.1
-/Siamese/Conf_MatrixFT_drop.png>] [19
+/Siamese/Conf_MatrixFT_drop.png>]
+<images/5/1_model.png, id=136, 569.12625pt x 215.6055pt>
+File: images/5/1_model.png Graphic file (type png)
+<use images/5/1_model.png>
+Package pdftex.def Info: images/5/1_model.png  used on input line 743.
+(pdftex.def)             Requested size: 380.26593pt x 144.06343pt.
+<images/5/1_accuracy.png, id=137, 263.7855pt x 72.27pt>
+File: images/5/1_accuracy.png Graphic file (type png)
+<use images/5/1_accuracy.png>
+Package pdftex.def Info: images/5/1_accuracy.png  used on input line 749.
+(pdftex.def)             Requested size: 190.13297pt x 52.09169pt.
+<images/5/1_matrix.png, id=138, 233.07076pt x 199.34476pt>
+File: images/5/1_matrix.png Graphic file (type png)
+<use images/5/1_matrix.png>
+Package pdftex.def Info: images/5/1_matrix.png  used on input line 754.
+(pdftex.def)             Requested size: 190.13297pt x 162.62422pt.
+ [19
 
+ <./images/5/1_model.png> <./images/5/1_accuracy.png> <./images/5/1_matrix.png>
+]
+<images/5/2_model.png, id=145, 569.7285pt x 218.61674pt>
+File: images/5/2_model.png Graphic file (type png)
+<use images/5/2_model.png>
+Package pdftex.def Info: images/5/2_model.png  used on input line 781.
+(pdftex.def)             Requested size: 380.26593pt x 145.91536pt.
+<images/5/2_accuracy.png, id=146, 244.5135pt x 72.27pt>
+File: images/5/2_accuracy.png Graphic file (type png)
+<use images/5/2_accuracy.png>
+Package pdftex.def Info: images/5/2_accuracy.png  used on input line 787.
+(pdftex.def)             Requested size: 190.13297pt x 56.19943pt.
+<images/5/2_matrix.png, id=147, 233.07076pt x 196.93575pt>
+File: images/5/2_matrix.png Graphic file (type png)
+<use images/5/2_matrix.png>
+Package pdftex.def Info: images/5/2_matrix.png  used on input line 792.
+(pdftex.def)             Requested size: 190.13297pt x 160.65895pt.
+ [20
+
+ <./images/5/2_model.png> <./images/5/2_accuracy.png> <./images/5/2_matrix.png>
 ] (project.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5425 strings out of 480799
- 91247 string characters out of 2895785
+ 5471 strings out of 480799
+ 92293 string characters out of 2895785
  354296 words of memory out of 3000000
- 21346 multiletter control sequences out of 15000+200000
+ 21388 multiletter control sequences out of 15000+200000
  543419 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,9n,49p,1429b,410s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -665,9 +701,9 @@ ic/amsfonts/cm/cmmi10.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/alice/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alice/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on project.pdf (20 pages, 1366353 bytes).
+Output written on project.pdf (21 pages, 1442703 bytes).
 PDF statistics:
- 499 PDF objects out of 1000 (max. 8388607)
+ 515 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 236 words of extra memory for PDF output out of 10000 (max. 10000000)
 
