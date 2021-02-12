@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  12 FEB 2021 17:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.6.2)  12 FEB 2021 17:22
 entering extended mode
 **./project.tex
 (project.tex
@@ -632,41 +632,41 @@ File: images/4.1/Siamese/Model.png Graphic file (type png)
 <use images/4.1/Siamese/Model.png>
 Package pdftex.def Info: images/4.1/Siamese/Model.png  used on input line 669.
 (pdftex.def)             Requested size: 234.73524pt x 99.20412pt.
-<images/4.1/Siamese/Accuracy_fe.png, id=126, 289.83281pt x 402.00188pt>
+<images/4.1/Siamese/Accuracy_fe.png, id=126, 283.0575pt x 398.23781pt>
 File: images/4.1/Siamese/Accuracy_fe.png Graphic file (type png)
 <use images/4.1/Siamese/Accuracy_fe.png>
 Package pdftex.def Info: images/4.1/Siamese/Accuracy_fe.png  used on input line
- 682.
-(pdftex.def)             Requested size: 169.00563pt x 234.41258pt.
-<images/4.1/Siamese/Conf_Matrix_fe.png, id=127, 259.7203pt x 219.06844pt>
+ 684.
+(pdftex.def)             Requested size: 169.00563pt x 237.78389pt.
+<images/4.1/Siamese/Conf_Matrix_fe.png, id=127, 255.95625pt x 221.32687pt>
 File: images/4.1/Siamese/Conf_Matrix_fe.png Graphic file (type png)
 <use images/4.1/Siamese/Conf_Matrix_fe.png>
 Package pdftex.def Info: images/4.1/Siamese/Conf_Matrix_fe.png  used on input l
-ine 689.
-(pdftex.def)             Requested size: 169.00563pt x 142.5499pt.
+ine 691.
+(pdftex.def)             Requested size: 169.00563pt x 146.14034pt.
 <images/4.1/Siamese/AccuracyFT.png, id=128, 286.82156pt x 396.7322pt>
 File: images/4.1/Siamese/AccuracyFT.png Graphic file (type png)
 <use images/4.1/Siamese/AccuracyFT.png>
 Package pdftex.def Info: images/4.1/Siamese/AccuracyFT.png  used on input line 
-699.
+701.
 (pdftex.def)             Requested size: 169.00563pt x 233.77333pt.
 <images/4.1/Siamese/AccuracyFT_drop.png, id=129, 283.0575pt x 405.01312pt>
 File: images/4.1/Siamese/AccuracyFT_drop.png Graphic file (type png)
 <use images/4.1/Siamese/AccuracyFT_drop.png>
 Package pdftex.def Info: images/4.1/Siamese/AccuracyFT_drop.png  used on input 
-line 704.
+line 706.
 (pdftex.def)             Requested size: 169.00563pt x 241.82936pt.
 <images/4.1/Siamese/Conf_MatrixFT.png, id=130, 258.21469pt x 221.32687pt>
 File: images/4.1/Siamese/Conf_MatrixFT.png Graphic file (type png)
 <use images/4.1/Siamese/Conf_MatrixFT.png>
 Package pdftex.def Info: images/4.1/Siamese/Conf_MatrixFT.png  used on input li
-ne 709.
+ne 711.
 (pdftex.def)             Requested size: 169.00563pt x 144.86714pt.
 <images/4.1/Siamese/Conf_MatrixFT_drop.png, id=131, 259.7203pt x 222.8325pt>
 File: images/4.1/Siamese/Conf_MatrixFT_drop.png Graphic file (type png)
 <use images/4.1/Siamese/Conf_MatrixFT_drop.png>
 Package pdftex.def Info: images/4.1/Siamese/Conf_MatrixFT_drop.png  used on inp
-ut line 716.
+ut line 718.
 (pdftex.def)             Requested size: 169.00563pt x 144.9992pt.
 
 
@@ -684,17 +684,17 @@ png> <./images/4.1/Siamese/Conf_MatrixFT_drop.png>]
 <images/5/1_model.png, id=139, 569.12625pt x 215.6055pt>
 File: images/5/1_model.png Graphic file (type png)
 <use images/5/1_model.png>
-Package pdftex.def Info: images/5/1_model.png  used on input line 747.
+Package pdftex.def Info: images/5/1_model.png  used on input line 749.
 (pdftex.def)             Requested size: 380.26593pt x 144.06343pt.
 <images/5/1_accuracy.png, id=140, 263.7855pt x 72.27pt>
 File: images/5/1_accuracy.png Graphic file (type png)
 <use images/5/1_accuracy.png>
-Package pdftex.def Info: images/5/1_accuracy.png  used on input line 753.
+Package pdftex.def Info: images/5/1_accuracy.png  used on input line 755.
 (pdftex.def)             Requested size: 190.13297pt x 52.09169pt.
 <images/5/1_matrix.png, id=141, 233.07076pt x 199.34476pt>
 File: images/5/1_matrix.png Graphic file (type png)
 <use images/5/1_matrix.png>
-Package pdftex.def Info: images/5/1_matrix.png  used on input line 757.
+Package pdftex.def Info: images/5/1_matrix.png  used on input line 759.
 (pdftex.def)             Requested size: 190.13297pt x 162.62422pt.
  [20
 
@@ -703,17 +703,17 @@ Package pdftex.def Info: images/5/1_matrix.png  used on input line 757.
 <images/5/2_model.png, id=148, 569.7285pt x 218.61674pt>
 File: images/5/2_model.png Graphic file (type png)
 <use images/5/2_model.png>
-Package pdftex.def Info: images/5/2_model.png  used on input line 785.
+Package pdftex.def Info: images/5/2_model.png  used on input line 787.
 (pdftex.def)             Requested size: 380.26593pt x 145.91536pt.
 <images/5/2_accuracy.png, id=149, 244.5135pt x 72.27pt>
 File: images/5/2_accuracy.png Graphic file (type png)
 <use images/5/2_accuracy.png>
-Package pdftex.def Info: images/5/2_accuracy.png  used on input line 790.
+Package pdftex.def Info: images/5/2_accuracy.png  used on input line 792.
 (pdftex.def)             Requested size: 190.13297pt x 56.19943pt.
 <images/5/2_matrix.png, id=150, 233.07076pt x 196.93575pt>
 File: images/5/2_matrix.png Graphic file (type png)
 <use images/5/2_matrix.png>
-Package pdftex.def Info: images/5/2_matrix.png  used on input line 794.
+Package pdftex.def Info: images/5/2_matrix.png  used on input line 796.
 (pdftex.def)             Requested size: 190.13297pt x 160.65895pt.
  [21
 
@@ -746,7 +746,7 @@ ic/amsfonts/cm/cmmi10.pfb><C:/Users/alice/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/alice/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alice/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on project.pdf (22 pages, 1451858 bytes).
+Output written on project.pdf (22 pages, 1451782 bytes).
 PDF statistics:
  518 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
