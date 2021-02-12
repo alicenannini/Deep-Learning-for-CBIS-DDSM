@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-%\usepackage{frontespizio}
+\usepackage{frontespizio}
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage[english]{varioref}
@@ -26,31 +26,31 @@ This project includes various analyses and classifications related to mammogram 
 You can refer to these \textit{ipynb} files to verify the code we worked on:\\ \\
 Task 2.1:
 \begin{itemize}
-\item \textit{Scratch\_CNN\_2.1.1 (no data aug)} is the first implementation
-\item \textit{Scratch\_CNN\_2.1.2 (data aug)} is the implementation with data augmentation
-\item \textit{Scratch\_CNN\_2.1.3 (holdout val)} is the final validation of the best model and the training used for saving the model "scratch\_cnn\_1"
+\item \textit{Scratch\_CNN\_1} is the final training of the best model from scratch, for the classification between mass and calcification, saved as "scratch\_cnn\_1"
 \end{itemize}
 Task 2.2:
 \begin{itemize}
-\item \textit{Scratch\_CNN\_2.2.1 (data aug)} is the implementation with data augmentation
-\item \textit{Scratch\_CNN\_2.2.2 (holdout val)} is the final validation of the best model and the training used for saving the model "scratch\_cnn\_2"
+\item \textit{Scratch\_CNN\_2} is the final training of the best model from scratch, for the classification between benign and malignant, saved as "scratch\_cnn\_2"
+\item \textit{Scratch\_CNN\_2\_weight} is the final training of the best model from scratch that uses also the balanced class weights, for the classification between mass and calcification, saved as "scratch\_cnn\_2\_weight"
 \end{itemize}
 Task 3.1:
 \begin{itemize}
-\item 
+\item \textit{Pretrained\_CNN\_3.1\_FE} is the implementation of the VGG16 based network, trained with the feature extraction approach, and saved as "pretrained\_cnn\_1\_FE", for the mass-calcification discrimination
+\item \textit{Pretrained\_CNN\_3.1\_FT} is the implementation of the VGG16 based network, trained unfreezing the layers from block 5. The final model is saved as "pretrained\_cnn\_1\_FT"
 \end{itemize}
 Task 3.2:
 \begin{itemize}
-\item 
+\item \textit{Pretrained\_CNN\_3.2\_FE} is the implementation of the model based on VGG16, with the approach of feature extraction for the benign-malignant classification, and saved as "pretrained\_cnn\_2\_FE"
 \end{itemize}
 Task 4:
 \begin{itemize}
-\item \textit{Baseline\_CNN\_1} is the implementation of a classification between mass and calcification, using also the baseline patches
+\item \textit{Baseline\_CNN\_3classes} is the implementation of a classification between mass and calcification, and also baseline patch
+\item \textit{Baseline\_CNN\_siamese} is the implementation of a Siemese Network, that exploits the baseline patches to classify mass and calcification
 \end{itemize}
 Task 5:
 \begin{itemize}
-\item \textit{Ensemble\_1} is the implementation of the ensemble learning for the first classification
-\item \textit{Ensemble\_2} is the implementation of the ensemble learning for the second classification
+\item \textit{Ensemble\_1} is the implementation of the ensemble learning for the mass-calcification classification, finally saved as "ensemble\_1"
+\item \textit{Ensemble\_2} is the implementation of the ensemble learning for the benign-malignant classification, finally saved as "ensemble\_2"
 \end{itemize}
 
 
@@ -83,7 +83,6 @@ The best results were achieved with CNNs trained under the fine tuning scenario:
 In the third paper, a patch detector was initially developed, again from the CBIS-DDSM dataset, giving as input to the tested networks patches of abnormal and baseline tissue extracted from mammograms. The authors have used the pretrained networks VGG16, Resnet-50, and InceptionV3, with a transfer learning approach. Since the available images were in black and white, they were replicated on three channels to be compatible with the ImageNet pretrained networks. In addition, the data were augmented on-the-fly using horizontal flipping, rotation, and rescaling. The results of training the CNN on CBIS-DDSM demonstrated that the feature domain of the CNN can be well adapted from natural images to classify masses in mammograms. The best performance were obtained with the InceptionV3.
 
 The last paper were studied mostly for the preprocessing of the data. The experiments in this paper are carried on the CBIS-DDMS and mini-MIAS public databases. First of all, the authors performed some pre-processing steps like rescaling, bilateral filtering, contrast enhancement, on the data for achieving better performance. Then they applied data augmentation transformations to minimize the effect of overfitting, getting a dataset seven times bigger than the original one. Starting from some CNN architectures for training and fine tuning, the authors made adaptations for classification of mammograms on different levels (i.e. normal/abnormal, mass/calcification, and malignant/benign). 
-
 
 \clearpage
 
@@ -592,10 +591,10 @@ As we can observe from the previous summary tables, with regard to the technique
 
 \section{Task 4: Baseline patches}
 For this part of the project, we planned to integrate the baseline patches, the ones extracted from healthy tissues in the mammograms, into the classifiers identified so far. Our goal was to test whether adding the baseline patch samples into the training set would help the model better identify and learn features related to the abnormalities.
-We focused on the classification between mass and calcification. \\
+We focused on the classification between \textbf{mass} and \textbf{calcification}. \\
 So we started from the model architecture built from scratch in the $Task\ 2.1$ (fig.~\ref{fig:scratch_model}), and changed the number of output units to $3$. We carried out some tests, modifying the hyper-parameters, to see the effect that the baseline patches had on the network training.
 
-We initially trained with the architecture as it was, using again a batch size of $50$, the softmax as output function, and the Adam optimizer with the default learning rate. Moreover we have maintained the use of data augmentation. The obtained results are found in figures~\ref{fig:4_acc} and~\ref{fig:4_matrix}. We can see that the performance are good, around the $80\%$ of accuracy and F-score, but not as good as the model witouth the baseline. 
+We initially trained with the architecture as it was, using again a batch size of $50$, the softmax as output function, and the Adam optimizer with the default learning rate. Moreover we have maintained the use of data augmentation. We did an initial test with $64$ hidden units at the first FC layer, whose performance was exceeded by a new test with $128$ hidden units. The results of the latter are shown in the figures~\ref{fig:baseline_acc_1} and~\ref{fig:baseline_matrix_1}: we can see that they are good, around the $80\%$ of accuracy and F-score, but not as good as the model witouth the baseline. 
 
 \begin{figure}[h]
 \centering
@@ -603,14 +602,14 @@ We initially trained with the architecture as it was, using again a batch size o
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/4.1/1_acc}
 		\caption{Accuracy and loss graphs for the model based on the CNN from scratch ($Task\ 4$)}
-		\label{fig:4_acc}
+		\label{fig:baseline_acc_1}
 	\end{minipage}
 	\hspace{5mm}%
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/4.1/1_matrix}
 		\caption{Confusion matrix for the test-set predictions}
-		\label{fig:4_matrix}
+		\label{fig:baseline_matrix_1}
 	\end{minipage}%
 \end{figure}
 
@@ -625,6 +624,8 @@ We thought this was due to the large imbalance in the dataset: in fact, the numb
     > Mass samples: 1041, weight: 1.46
     > Calc samples: 1226, weight: 1.24
 \end{verbatim}
+
+Here as in other tests, rebalancing the weights did not bring much improvement. However, we can see that mass and calcification classification improved, by $14\%$ and $6\%$ respectively, but at the expense of baseline classification which worsened by $10\%$. What we noticed in general, even in other tests that we did not report, is that calcifications are the abnormalities that are most often confused: in our opinion this is due to the fact that, as the radiologists with whom we were in contact had explained to us, calcifications are much smaller than masses, and consequently it could be more difficult to capture their features for neural networks, and confuse them with other classes.
 
 \begin{figure}[h]
 \centering
@@ -643,26 +644,25 @@ We thought this was due to the large imbalance in the dataset: in fact, the numb
 	\end{minipage}%
 \end{figure}
 
-Here as in other tests, rebalancing the weights did not bring much improvement. However, we can see that mass and calcification classification improved, by $14\%$ and $8\%$ respectively, but at the expense of baseline classification which worsened by $16\%$. What we noticed in general, even in other tests that we did not report, is that calcifications are the abnormalities that are most often confused: in our opinion this is due to the fact that, as the radiologists with whom we were in contact had explained to us, calcifications are much smaller than masses, and consequently it could be more difficult to capture their features for neural networks, and confuse them with other classes.
-
-\begin{table}
+\begin{table}[h]
 \centering
-	\begin{tabular}{|cccc|}
+	\begin{tabular}{|cc|ccc|}
 	\hline
-	Model & Test Accuracy & Test Loss & F-score \\
+	Hidden units & Weights & Test Accuracy & Test Loss & F-score \\
 	\hline
-	batch:50, hidden u:64 & 0.83 & 0.46 & 0.80 \\
-	"    with weights & 0.79 & 0.57 & 0.79 \\
+	64  &	-    		   & 0.78 & 0.57 & 0.77 \\
+	128 &	-  			   & 0.82 & 0.49 & 0.82 \\
+	64  & [0.66,1.46,1.24] & 0.77 & 0.54 & 0.78 \\
+	128 & [0.66,1.46,1.24] & 0.79 & 0.54 & 0.80 \\
 	\hline
 	\end{tabular}
-\caption{Summary of the performance of the $Task\ 4$ tests}
+\caption{Summary of the performance of the 3-class classifier tests ($Task\ 4$)}
 \end{table}
+
+\clearpage
 
 \subsection{Siamese Network}
 Since the previous approach did not bring the expected results, we tried another approach, based on the architecture called Siamese Network. The idea was to send as input to the two identical networks of the model pairs of images, respectively to one a baseline patch and to the other an abnormality patch (mass or calcification).
-
-At the output of the Flatten layer of the two common networks, we obtained the features extracted from the input and with a Lambda layer we performed the subtraction between the abnormality and baseline patch features. Our hope was that, from this difference, the most relevant features would be highlighted and the classification between masses and calcifications would improve. \\
-The final architecture we used is shown in figure~\ref{fig:siamese_model}: we started from the convolutional base of VGG16, keeping all blocks frozen. The we did an additional test, trying to unfreeze the convolutional base from the 5th block. The results of these tests are shown in the figures~\ref{fig:siamese_fe} and~\ref{fig:siamese_ft}: note that the Early Stop callback was used with a patience of 10 and with the best weights restoring mode activated.
 
 \begin{figure}[h]
 \centering
@@ -671,16 +671,20 @@ The final architecture we used is shown in figure~\ref{fig:siamese_model}: we st
 \label{fig:siamese_model}
 \end{figure}
 
+At the output of the Flatten layer of the two common networks, we obtained the features extracted from the input and with a Lambda layer we performed the subtraction between the abnormality and baseline patch features. Our hope was that, from this difference, the most relevant features would be highlighted and the classification between masses and calcifications would improve. \\
+The final architecture we used is shown in figure~\ref{fig:siamese_model}: we started from the convolutional base of VGG16, keeping all blocks frozen. The we did an additional test, trying to unfreeze the convolutional base from the 5th block. The results of these tests are shown in the figures~\ref{fig:siamese_fe} and~\ref{fig:siamese_ft}: note that the Early Stop callback was used with a patience of 10 and with the best weights restoring mode activated.
+
+
 \begin{figure}[h]
 \centering
-	\begin{minipage}[c]{.35\textwidth}
+	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Accuracy_fe}
 		\caption{Accuracy and loss graphs for the Siamese Network (feature extraction)}
 		\label{fig:scratch_accuracy}
 	\end{minipage}
 	\hspace{5mm}%
-	\begin{minipage}[c]{.35\textwidth}
+	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Conf_Matrix_fe}
 		\caption{Confusion matrix for the test-set predictions}
@@ -715,18 +719,18 @@ The final architecture we used is shown in figure~\ref{fig:siamese_model}: we st
 	\end{minipage}
 \end{figure}
 
-\begin{table}
+\begin{table}[h]
 \centering
 	\begin{tabular}{|ccc|cccc|}
 	\hline
 	Model & Unfreezed block & Dropout & Test Accuracy & Test Loss & AUC & F-score \\
 	\hline
 	VGG16 & - & -   & 0.86 & 0.34 & 0.86 & 0.85 \\
-	"     & 5 & -   & 0.87 & 0.33 & 0.87 & 0.86 \\
-	"	  & 5 & 0.5 & 0.87 & 0.34 & 0.87 & 0.86 \\
+	VGG16 & 5 & -   & 0.87 & 0.33 & 0.87 & 0.86 \\
+	VGG16 & 5 & 0.5 & 0.87 & 0.34 & 0.87 & 0.86 \\
 	\hline
 	\end{tabular}
-\caption{Summary of the performance of the Siamese Network tests}
+\caption{Summary of the performance of the Siamese Network tests ($Task\ 4$)}
 \end{table}
 
 \clearpage
@@ -747,8 +751,7 @@ For the last task, we took the best models saved so far and merged them into a s
 	\begin{minipage}[c]{.45\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/5/1_accuracy}
-	\end{minipage}	
-	\hspace{5mm}%
+	\end{minipage}
 	\begin{minipage}[c]{.45\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/5/1_matrix}
@@ -773,6 +776,7 @@ For the last task, we took the best models saved so far and merged them into a s
 \clearpage
 
 \subsection{Benign-Malignant discriminator}
+Since the results of this network were better then all the previous models alone, we decided to save also this network and test the private dataset with it.
 
 \begin{figure}[h]
 \centering
@@ -781,12 +785,10 @@ For the last task, we took the best models saved so far and merged them into a s
 		\includegraphics[width=.9\textwidth]{images/5/2_model}
 		\caption{ Ensemble network for the benign-malignant classification}
 	\end{minipage}
-	
 	\begin{minipage}[c]{.45\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/5/2_accuracy}
 	\end{minipage}	
-	\hspace{5mm}%
 	\begin{minipage}[c]{.45\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/5/2_matrix}
