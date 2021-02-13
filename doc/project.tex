@@ -45,7 +45,7 @@ Task 3.2:
 Task 4:
 \begin{itemize}
 \item \textit{Baseline\_CNN\_3classes} is the implementation of a classification between mass and calcification, and also baseline patch
-\item \textit{Baseline\_CNN\_siamese} is the implementation of a Siemese Network, that exploits the baseline patches to classify mass and calcification
+\item \textit{Baseline\_CNN\_siamese} is the implementation of a Siemese Network, that exploits the baseline patches to classify mass and calcification, saved as "baseline\_cnn\_1\_siamese"
 \end{itemize}
 Task 5:
 \begin{itemize}
@@ -70,6 +70,7 @@ Finally class labels have been assigned to the patches according to the followin
 \end{itemize}
 
 \section{Task 1: Related works}
+The main papers we based our work on are the following:
 \begin{itemize}
 \item [1] Transfer Learning and Fine Tuning in Breast Mammogram Abnormalities Classification on CBIS-DDSM Database (Lenin G.Falconi, Maria Perez, Wilbert G.Aguilar, Aura Conci) 2020
 \item [2] Deep Learning for Breast Cancer Diagnosis from Mammograms - A Comparative Study (Lazaros Tsochatzidis, Lena Costaridou, Ioannis Pratikakis) 2019
@@ -78,7 +79,7 @@ Finally class labels have been assigned to the patches according to the followin
 Amir Hanif Dar, Hani Alquhayz) 2019
 \end{itemize}
 
-The first paper, working on our same dataset, deals with the classification of abnormalities using ImageNet pretrained convolutional networks, with the technique of transfer learning (TL) but also fine tuning (FT). The authors specify that the main obstacle for this kind of problem is that there are not yet mammogram public datasets that are quite extensive and "deep", and consequently if we have few data it is difficult to avoid overfitting. The proposed approach, both with TL and FT, consists in replacing the last fully connecting layer related to the original ImageNet classification task with a set of layer: Global Average Pooling 2D, Full Connecting, Dropout, and Classification Layer. They focused on ìly on the masses images, that are initially pre-processed to enhance contrast, then normalized between 0 and 255, and finally rearranged by data augmentation. The dataset was increased to a total of 60.000 images, where 80\% are used for training, 10\% for validation, and 10\% for testing. Looking at the results of TL, they obtained the best AUC with the Resnet-50, that although overfitted. On the other hand, both VGG16 and VGG19 did not presented overfitting but their classification performance were lower. Regarding to FT instead, the best resultes were obtained by VGG16, unfreezed once from the 8th layer and once from the 10th layer, and by VGG19, unfreezed from the 17th layer.
+The first paper, working on our same dataset, deals with the classification of abnormalities using ImageNet pretrained convolutional networks, with the technique of transfer learning (TL) but also fine tuning (FT). The authors specify that the main obstacle for this kind of problem is that there are not yet mammogram public datasets that are quite extensive and "deep", and consequently if we have few data it is difficult to avoid overfitting. The proposed approach, both with TL and FT, consists in replacing the last fully connecting layer related to the original ImageNet classification task with a set of layer: Global Average Pooling 2D, Full Connecting, Dropout, and Classification Layer. They focused on the masses images, that are initially pre-processed to enhance contrast, then normalized between 0 and 255, and finally rearranged by data augmentation. The dataset was increased to a total of 60.000 images, where 80\% are used for training, 10\% for validation, and 10\% for testing. Looking at the results of TL, they obtained the best AUC with the Resnet-50, that although overfitted. On the other hand, both VGG16 and VGG19 did not presented overfitting but their classification performance were lower. Regarding to FT instead, the best results were obtained by VGG16, unfreezed once from the 8th layer and once from the 10th layer, and by VGG19, unfreezed from the 17th layer.
 
 In the second paper, the authors worked on both the CBIS-DDSM dataset and another dataset, the DDSM-400, again to perform a classification of masses between benign and malignant. The initial approach presented is based on training networks from scratch (starting from the Glorot initialization), while later an approach using networks pretrained on the ImageNet datased is presented. They used data augmentation, in particular rotation and flipping transformations, performed online. 
 The best results were achieved with CNNs trained under the fine tuning scenario: maximum performance is found with Resnet-50 and Resnet-101. Regarding the networks from scratch, the authors explain that the lowest results are due to the limited number of samples in the analyzed dataset: they say that in these cases \enquote{effective training of larger and complex networks cannot be achieved}.
@@ -109,10 +110,10 @@ Finally, we reshaped all the training images tensors in a single \textit{numpy} 
 
 
 \section{Task 2: From Scratch CNN}
-We developed different models of neural networks to work with the given dataset from scratch and we did different tests to find the better hyperparameters to build the final model. This section is divided in two parts: i ìn the first one we show how we built a model for classifying the dataset images between \textit{mass} abnormality and \textit{calfication} abnormality, while in the second part we describe the model built to classify between \textit{benign} and \textit{malignant} abnormalities.
+We developed different models of neural networks to work with the given dataset from scratch and we did different tests to find the better hyperparameters to build the final model. This section is divided in two parts: in the first one we show how we built a model for classifying the dataset images between \textit{mass} abnormality and \textit{calcification} abnormality, while in the second part we describe the model built to classify between \textit{benign} and \textit{malignant} abnormalities.
 
 \subsection{Task 2.1: Mass-Calcification discriminator}
-We first tried to build a simple CNN, with some convolutional and max-pooling layers, and two final dense layers. We trained and tested the model several times, changing the hyperparameters to find a good model for our problem. The final architecture that has been used for the most relevant tests is shown in figure~\ref{fig:scratch_model}. It is made of five convolutional layers, with an increasing number of kernels. Each layer is followed by a max-pooling of $2x2$, except for the last one so that the input of the dense layer is not too reduced. The activation function used in the layers is \textit{ReLu}.
+We first tried to build a simple CNN, with some convolutional and max-pooling layers, and two final dense layers. We trained and tested the model several times, changing the hyperparameters to find a good model for our problem. The final architecture that has been used for the most relevant tests is shown in figure~\ref{fig:scratch_model}. It is made of five convolutional layers, with an increasing number of kernels. Each layer is followed by a max-pooling of $2x2$, except for the last one so that the input of the dense layer is not too reduced. The activation function used in the layers was \textit{ReLu}.
 
 \begin{figure}[h]
 \centering
@@ -121,7 +122,7 @@ We first tried to build a simple CNN, with some convolutional and max-pooling la
 \label{fig:scratch_model}
 \end{figure}
 
-After asserting the architecture, the model has been trained with different numbers of \textit{hidden units} for the first fully connected layer, but also for different \textit{batch sizes}, different \textit{output functions} and different \textit{optimizers}. 
+After asserting the architecture, the model has been trained with different numbers of \textit{hidden units} for the first fully connected layer, but also with different \textit{batch sizes}, different \textit{output functions} and different \textit{optimizers}. 
 In all the tests, the conclusion has been that the network was over-training, and this is the reason for which we have developed a second model, adding a data augmentation preprocessing. 
 In the figure~\ref{fig:scratch_accuracy}, we present the results in term of accuracy and loss, but also the consufion matrix (fig.~\ref{fig:scratch_matrix}), related to a test of the model with $64$ hidden units, a batch size of $25$, and the \textit{softmax} function for the output layer. 
 The used optimizer was \textit{Adam}, with the deafult learning rate of $0.001$. As we said before, the gap between the training and validation graphs shows that the model is over-training: even if the predictions on the test set are accurate, we cannot rely on this network as it is.
@@ -156,7 +157,7 @@ loss & 0.0123 & 1.1618 & 1.5748 \\
 
 \clearpage
 \subsubsection{Data augmentation}
-To overcome the problem of over-fitting, we augmented our training using the \textit{ImageDataGenerator} class of \textit{keras}. The main variations we adopted were random rotation up to 40 degrees, random vertical and horizontal shifts with a range of 0.2, random zoom with a range of 0.2, random shear with a range of 0.2 and nearest fill model. To set these parameters we referred to the data in the papers we studied in the initial phase of the project. Before applying these variations to the train set, we splitted it to get the validation set separately using a validation size of the $15\%$.
+To overcome the problem of over-fitting, we augmented our training set using the \textit{ImageDataGenerator} class of \textit{keras}. The main variations we adopted were random rotation up to 40 degrees, random vertical and horizontal shifts with a range of 0.2, random zoom with a range of 0.2, random shear with a range of 0.2 and nearest fill model. To set these parameters we referred to the data in the papers we studied in the initial phase of the project. Before applying these variations to the train set, we splitted it to get the validation set separately using a validation size of the $15\%$.
 
 \begin{figure}[h]
 \centering
@@ -259,7 +260,7 @@ The better results that we obtained are shown in figures~\ref{fig:accuracy_2.2} 
 
 As we can see from the graphs, there are some improvement during the training of the network, but they're very limited and slow. We tried to increment the number of training epochs and the model started to overfitting badly. The major problem is that, predicting the test-set labels, the classifier tended to assign samples to the benign class, when we would have preferred more attention to the malignant class instead, since it is the most critical.\\
 
-We tried to change the architecture of the model again, looking for a structure that could better capture the features of our dataset. After few attempts, we arrived at the model described in figure~\ref{fig:model_2.2_1}, in which we inserted an extra convolutional layer with $128$ kernels. We maintained the number of hidden units of the FC layer to $64$. This last choice has been made also to simplify the network, decreasing the number of parameters to train in order to reduce the overfitting. The dropout layer remained with a rate of $0.2$.
+We tried to change the architecture of the model again, looking for a structure that could better capture the features of our dataset. After few attempts, we arrived at the model described in figure~\ref{fig:model_2.2_1}, in which we inserted an extra convolutional layer with $128$ kernels. We set the number of hidden units of the FC layer to $64$. This last choice has been made also to simplify the network, decreasing the number of parameters to train in order to reduce the overfitting. The dropout layer remained with a rate of $0.2$.
 
 \begin{figure}[h]
 \centering
@@ -306,15 +307,15 @@ Batch size & Hidden units & Measure & 1st & 2nd & 3rd & 4th & \textbf{Avg} \\
 The results (fig.~\ref{fig:accuracy_2.2_1} and~\ref{fig:matrix_2.2_1}) in terms of accuracy and loss were very similar to the previous model, but we can see from the confusion matrix that the \textit{malignant} class was better predicted and we considered it as a good result.
 As we can see from the table, the main problem is the value of the \textit{F-score}, that indicates a very unbalanced classification.\\
 
-Trying to solve the unbalancing of the two classes, we assigned weights to them so that their unbalance in the training set would be considered. We have trained again the network, passing the new weights of the classes as parameters: the results are found in the figures~\ref{fig:accuracy_2.2_1_weights} and~\ref{fig:matrix_2.2_1_weights}. 
+Trying to solve the unbalancing of the two classes, we assigned weights to them so that their unbalance in the training set would be considered. We have trained again the network, passing the new weights of the classes as parameters to the \textit{fit} function: the results are found in the figures~\ref{fig:accuracy_2.2_1_weights} and~\ref{fig:matrix_2.2_1_weights}. 
 
 \begin{verbatim}
     weight_for_benign = (1 / benign)*(total)/2.0 
     weight_for_malignant = (1 / malignant)*(total)/2.0
     
-    > Total samples: 2274
-    > Benign samples: 1341
-    > Malignant samples: 933
+    > Total: 2274
+    > Benign: 1341
+    > Malignant: 933
     > Weight for benign: 0.85
     > Weight for malignant: 1.22
 \end{verbatim}
@@ -324,7 +325,7 @@ Trying to solve the unbalancing of the two classes, we assigned weights to them 
 We can see that using the class weights the classifier managed to find a slightly higher number of malignant samples, at the expense of benign samples. Comparing the holdout validation tables (~\ref{tab:task2.2} and~\ref{tab:task2.2_weight}) we can see that accuracy and loss worsened, while the AUC remained almost unchanged, and the F-score increased by two percentage points. 
 We also tried to change the values of the weights to see if you could improve performance further: our idea was to give even more weight to the malignant class, that was considered the most critical. But this approach did not satisfy us, because the network started to give too much importance to the class with the highest weight, and even most benign samples were classified as malignant. \\
 
-So our choice for the final model was the version without the balanced class weights: although the F-score was higher in the one with the class weights, it paid with too much decrease of accuracy and too much increase of loss.
+So our choice for the final model was the version without the balanced class weights: although the F-score was higher in the one with the class weights, it paid with too much decrease of accuracy and too much increase of loss. However, we saved both models so that we could use them in the ensemble network.
 
 \begin{figure}[h]
 \centering
@@ -378,13 +379,13 @@ We found a study on the most used networks in the literature (shown in fig.~\ref
 \label{fig:pretrained_networks}
 \end{figure}
 
-We used two strategies to leverage a pre-trained network. In the first one, called Feature Extraction, we started from a network trained on the “imagenet” dataset and removed the top layers and trained a new classifier on top of the output.
+We used two strategies to leverage a pre-trained network. In the first one, called Feature Extraction, we started from a network trained on the ImageNet dataset, removed the top layers, and trained a new classifier on top of the output.
 The second one, called Fine Tuning is similar. The main difference was that the last layer of the model base used for feature extraction was unfrozen and we trained both the newly added part of the model and these top layers. \\
 The results obtained with \textit{Resnet-50} were not reported in this paper, because they weren't significant.
 
 \subsection{Task 3.1: Mass-Calcification discriminator}
 In all our tests we applied Data Augmentation because we ran into an overfitting problem.
-We built a new larger training set, starting from the original images and adding two more variations for each image. Thanks to this approach, we obtained improved results, in particular overtraining has been significantly reduced. The batch size value range that achieved higher performance is between $32$ and $64$. Lower values led to high oscillations of both the training and validation loss/accuracy. For the learning rate, after testing values from 1e-4 to 1e-6, we ended up using the value of 1e-5. After testing different activation functions we ended up using “sigmoid” for the output. 
+We built a new larger training set, starting from the original images and adding two more variations for each image. Thanks to this approach, we obtained improved results, in particular overtraining has been significantly reduced. The batch size value range that achieved higher performance is between $32$ and $64$. Lower values led to high oscillations of both the training and validation loss/accuracy. For the learning rate, after testing values from 1e-4 to 1e-6, we ended up using the value of 1e-5. After testing different activation functions we ended up using \textit{softmax} for the output. 
 
 \begin{figure}[h]
 \centering
@@ -597,7 +598,7 @@ For this part of the project, we planned to integrate the baseline patches, the 
 We focused on the classification between \textbf{mass} and \textbf{calcification}. \\
 So we started from the model architecture built from scratch in the $Task\ 2.1$ (fig.~\ref{fig:scratch_model}), and changed the number of output units to $3$. We carried out some tests, modifying the hyper-parameters, to see the effect that the baseline patches had on the network training.
 
-We initially trained with the architecture as it was, using again a batch size of $50$, the softmax as output function, and the Adam optimizer with the default learning rate. Moreover we have maintained the use of data augmentation. We did an initial test with $64$ hidden units at the first FC layer, whose performance was exceeded by a new test with $128$ hidden units. The results of the latter are shown in the figures~\ref{fig:baseline_acc_1} and~\ref{fig:baseline_matrix_1}: we can see that they are good, around the $80\%$ of accuracy and F-score, but not as good as the model witouth the baseline. 
+We initially trained with the architecture as it was, using again a batch size of $50$, the softmax as output function, and the Adam optimizer with the default learning rate. Moreover we have maintained the use of data augmentation. We did an initial test with $64$ hidden units at the first FC layer, whose performance was exceeded by a new test with $128$ hidden units. The results of the latter are shown in the figures~\ref{fig:baseline_acc_1} and~\ref{fig:baseline_matrix_1}: we can see that they are good, around the $80\%$ of accuracy, but not as good as the model witouth the baseline. 
 
 \begin{figure}[h]
 \centering
@@ -649,14 +650,14 @@ Here as in other tests, rebalancing the weights did not bring much improvement. 
 
 \begin{table}[h]
 \centering
-	\begin{tabular}{|cc|ccc|}
+	\begin{tabular}{|cc|cc|}
 	\hline
-	Hidden units & Weights & Test Accuracy & Test Loss & F-score \\
+	Hidden units & Weights & Test Accuracy & Test Loss \\
 	\hline
-	64  &	-    		   & 0.78 & 0.57 & 0.77 \\
-	128 &	-  			   & 0.82 & 0.49 & 0.82 \\
-	64  & [0.66,1.46,1.24] & 0.77 & 0.54 & 0.78 \\
-	128 & [0.66,1.46,1.24] & 0.79 & 0.54 & 0.80 \\
+	64  &	-    		   & 0.78 & 0.57 \\
+	128 &	-  			   & 0.82 & 0.49 \\
+	64  & [0.66,1.46,1.24] & 0.77 & 0.54 \\
+	128 & [0.66,1.46,1.24] & 0.79 & 0.54 \\
 	\hline
 	\end{tabular}
 \caption{Summary of the performance of the 3-class classifier tests ($Task\ 4$)}
