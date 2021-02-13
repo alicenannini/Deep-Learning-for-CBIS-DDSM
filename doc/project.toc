@@ -1,6 +1,6 @@
 \babel@toc {english}{}
 \contentsline {section}{\numberline {1}Introduction}{1}%
-\contentsline {section}{\numberline {2}The dataset}{1}%
+\contentsline {section}{\numberline {2}The dataset}{2}%
 \contentsline {section}{\numberline {3}Task 1: Related works}{2}%
 \contentsline {section}{\numberline {4}Data Preprocessing}{4}%
 \contentsline {section}{\numberline {5}Task 2: From Scratch CNN}{4}%

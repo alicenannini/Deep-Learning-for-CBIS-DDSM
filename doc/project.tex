@@ -52,7 +52,10 @@ Task 5:
 \item \textit{Ensemble\_1} is the implementation of the ensemble learning for the mass-calcification classification, finally saved as "ensemble\_1"
 \item \textit{Ensemble\_2} is the implementation of the ensemble learning for the benign-malignant classification, finally saved as "ensemble\_2"
 \end{itemize}
+\vspace{10mm}
+Moreover, note that the \textit{Submission.csv} file has been created using the model "ensemble\_2".
 
+\clearpage
 
 \section{The dataset}
 The data on which we work are based on the \textbf{CBIS-DDSM} (Curated Breast Imaging Subset of Digital Database for Screening Mammography): it is a set of scanned film mammography studies, adapted to carry out an \textbf{abnormality diagnosis classification}. Following the detailed description attached to each original image, they can be divided into four classes that distinguish whether the represented abnormality patch is a mass or a calcification, and again whether it is benign or malignant. \\
@@ -260,7 +263,7 @@ We tried to change the architecture of the model again, looking for a structure 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=.5\textwidth]{images/2.2/1_model}
+\includegraphics[width=.45\textwidth]{images/2.2/1_model}
 \caption{Final architecture of the CNN from scratch ($Task\ 2.2$)}
 \label{fig:model_2.2_1}
 \end{figure}
@@ -672,9 +675,9 @@ Since the previous approach did not bring the expected results, we tried another
 \end{figure}
 
 At the output of the Flatten layer of the two common networks, we obtained the features extracted from the input and with a Lambda layer we performed the subtraction between the abnormality and baseline patch features. Our hope was that, from this difference, the most relevant features would be highlighted and the classification between masses and calcifications would improve. \\
-The final architecture we used is shown in figure~\ref{fig:siamese_model}: we started from the convolutional base of VGG16, keeping all blocks frozen. The we did an additional test, trying to unfreeze the convolutional base from the 5th block. The results of these tests are shown in the figures~\ref{fig:siamese_fe} and~\ref{fig:siamese_ft}: note that the Early Stop callback was used with a patience of 10 and with the best weights restoring mode activated.
+The final architecture we used is shown in figure~\ref{fig:siamese_model}: we started from the convolutional base of VGG16, keeping all blocks frozen. The we did an additional test, trying to unfreeze the convolutional base from the 5th block. The results of these tests are shown in the figures~\ref{fig:siamese_ft} and~\ref{fig:siamese_ft_drop}: note that the Early Stop callback was used with a patience of 10 and with the best weights restoring mode activated.
 
-The saved model was the one trained with the feature extraction approach.
+The saved model was the one trained with the feature extraction approach (fig.~\ref{fig:siamese_accuracy_fe} and~\ref{fig:siamese_matrix_fe}), because even if the performance on the test set was a little lower, it presented less overfitting.
 
 
 \begin{figure}[h]
@@ -683,14 +686,14 @@ The saved model was the one trained with the feature extraction approach.
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Accuracy_fe}
 		\caption{Accuracy and loss graphs for the Siamese Network (feature extraction)}
-		\label{fig:scratch_accuracy}
+		\label{fig:siamese_accuracy_fe}
 	\end{minipage}
 	\hspace{5mm}%
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Conf_Matrix_fe}
 		\caption{Confusion matrix for the test-set predictions}
-		\label{fig:scratch_matrix}
+		\label{fig:siamese_matrix_fe}
 	\end{minipage}%
 \end{figure}
 
@@ -710,14 +713,14 @@ The saved model was the one trained with the feature extraction approach.
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Conf_MatrixFT}
 		\caption{Performance for the Siamese Network, with FT}
-		\label{fig:siamese_fe}
+		\label{fig:siamese_ft}
 	\end{minipage}
 	\hspace{5mm}%
 	\begin{minipage}[c]{.4\textwidth}
 		\centering\setlength{\captionmargin}{0pt}%
 		\includegraphics[width=.9\textwidth]{images/4.1/Siamese/Conf_MatrixFT_drop}
 		\caption{Performance for the Siamese Network, with FT and dropout}
-		\label{fig:siamese_ft}
+		\label{fig:siamese_ft_drop}
 	\end{minipage}
 \end{figure}
 
@@ -741,6 +744,7 @@ The saved model was the one trained with the feature extraction approach.
 For the last task, we took the best models saved so far and merged them into a single network with a final additional layer, averaging over the outputs. This procedure was performed for both the mass-calcification classification and the benign-malignant classification.
 
 \subsection{Mass-Calcification discriminator}
+We can see from the table~\ref{tab:ensemble1}, that the ensemble model performed better on the test set than the individual networks.
 
 \begin{figure}[h]
 \centering
@@ -773,6 +777,7 @@ For the last task, we took the best models saved so far and merged them into a s
 	\hline
 	\end{tabular}
 \caption{Single model performance vs Ensemble performance}
+\label{tab:ensemble1}
 \end{table}
 
 \clearpage
